@@ -7,11 +7,11 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 #[Fillable(['name', 'nin', 'email', 'password', 'role_id', 'status', 'parent_id', 'profile_photo_path'])]
 #[Hidden(['password', 'remember_token'])]
@@ -48,6 +48,16 @@ class User extends Authenticatable
         return $this->hasMany(User::class, 'parent_id');
     }
 
+    public function sacco(): HasOne
+    {
+        return $this->hasOne(Sacco::class, 'admin_id');
+    }
+
+    public function isSuperAdmin(): bool
+    {
+        return $this->role && $this->role->slug === 'super-admin';
+    }
+
     public function getTenantIdAttribute()
     {
         return $this->parent_id ?? $this->id;
@@ -55,10 +65,14 @@ class User extends Authenticatable
 
     public function hasPermission($permissionSlug): bool
     {
-        if (!$this->role) {
+        if (! $this->role) {
             return false;
         }
-        
+
+        if ($this->isSuperAdmin()) {
+            return true;
+        }
+
         return $this->role->permissions()->where('slug', $permissionSlug)->exists();
     }
 }

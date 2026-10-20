@@ -1,27 +1,28 @@
 @extends('components.layouts.frontend')
 
-@section('title', 'About Us - Kulima Agri-SACCO')
+@section('title', 'About Platform - Pearl SACCO Management System')
 
 @section('styles')
 <style>
     .hero-about {
-        background: linear-gradient(rgba(0, 80, 150, 0.8), rgba(0, 80, 150, 0.9)), url('{{ asset("images/about.jpg") }}') center/cover;
+        background: linear-gradient(135deg, rgba(0, 43, 94, 0.88), rgba(0, 120, 212, 0.85)), url('{{ asset("images/about.jpg") }}') center/cover;
         color: white;
         padding: 100px 5% 80px;
         text-align: center;
     }
     
     .hero-about h1 {
-        font-size: 48px;
+        font-size: 44px;
         margin-bottom: 20px;
         color: white;
     }
     
     .hero-about p {
-        font-size: 20px;
+        font-size: 19px;
         max-width: 800px;
         margin: 0 auto;
-        opacity: 0.9;
+        opacity: 0.95;
+        line-height: 1.6;
     }
     
     .content-section {
@@ -68,7 +69,7 @@
     .value-card {
         background: var(--surface-color);
         padding: 40px;
-        border-radius: 8px;
+        border-radius: 12px;
         text-align: center;
         border: 1px solid var(--border-light);
         box-shadow: var(--shadow-sm);
@@ -78,45 +79,54 @@
         color: var(--primary-color);
         margin-bottom: 16px;
     }
+
+    @media (max-width: 768px) {
+        .grid-about {
+            grid-template-columns: 1fr;
+        }
+        .values-grid {
+            grid-template-columns: 1fr;
+        }
+    }
 </style>
 @endsection
 
 @section('content')
     <div class="hero-about">
-        <h1>Empowering Agricultural Communities</h1>
-        <p>Kulima Agri-SACCO is dedicated to modernizing how cooperative societies operate, bringing financial inclusion and digital efficiency to farmers across the region.</p>
+        <h1>Transforming SACCO Operations Across Uganda</h1>
+        <p>Pearl SACCO Management System is an enterprise-grade multi-SACCO management and oversight platform engineered to bring digital governance, transparent ledger keeping, and automated credit tracking to cooperative societies throughout Uganda.</p>
     </div>
     
     <div class="content-section">
         <div class="grid-about">
             <div class="about-text">
                 <h2>Our Mission & Vision</h2>
-                <p><strong>Mission:</strong> To provide a robust, secure, and user-friendly digital platform that simplifies the management of Agricultural SACCOs, ensuring transparency and growth for every member.</p>
-                <p><strong>Vision:</strong> A future where every agricultural cooperative, regardless of size, has access to enterprise-grade tools to manage savings, disburse loans, and elevate the economic status of the farming community.</p>
-                <p>We believe that by digitizing the administrative burden of SACCOs, leadership can focus on what truly matters: serving their members and investing in agricultural innovation.</p>
+                <p><strong>Mission:</strong> To provide a multi-tenant digital operating system that enables cooperative societies to register, manage members, safeguard savings, and disburse credit transparently while upholding national compliance guidelines.</p>
+                <p><strong>Vision:</strong> A connected national cooperative finance ecosystem where every registered SACCO operates with bank-grade security, automated credit recovery protocols, and verified member identification.</p>
+                <p>By shifting SACCOs away from paper registers and vulnerable spreadsheets, Pearl SACCO Management System protects member funds and standardizes operations for cooperative leadership and national stakeholders.</p>
             </div>
             <div>
-                <img src="{{ asset('images/about.jpg') }}" alt="Farmers" class="about-image">
+                <img src="{{ asset('images/about.jpg') }}" alt="Cooperative Members" class="about-image">
             </div>
         </div>
         
         <div class="section-header" style="margin-top: 100px;">
-            <h2>Core Values</h2>
-            <p>The principles that guide our platform and our partnership with you.</p>
+            <h2>Core Pillars</h2>
+            <p>The foundations driving the Pearl SACCO Management System architecture.</p>
         </div>
         
         <div class="values-grid">
             <div class="value-card">
-                <h3>Transparency</h3>
-                <p style="color: var(--text-secondary); line-height: 1.6;">Clear, immutable audit trails for every transaction ensuring trust between members and administration.</p>
+                <h3>Multi-SACCO Governance</h3>
+                <p style="color: var(--text-secondary); line-height: 1.6;">Unified oversight enabling the platform to monitor, approve, and audit distinct cooperative societies in separated, secure workspaces.</p>
             </div>
             <div class="value-card">
-                <h3>Security</h3>
-                <p style="color: var(--text-secondary); line-height: 1.6;">Bank-grade data protection ensuring your members' financial information and personal data remain strictly confidential.</p>
+                <h3>Risk Mitigation & Recovery</h3>
+                <p style="color: var(--text-secondary); line-height: 1.6;">Automated late penalty calculation, mandatory collateral/guarantor documentation, and account suspension safeguards to curb credit default.</p>
             </div>
             <div class="value-card">
-                <h3>Simplicity</h3>
-                <p style="color: var(--text-secondary); line-height: 1.6;">A user interface designed for everyone, requiring minimal training while delivering maximum operational power.</p>
+                <h3>Verified Compliance</h3>
+                <p style="color: var(--text-secondary); line-height: 1.6;">Ugandan NIRA NIN enforcement, Next of Kin records, and real-time email verification ensuring authentic, accountable member participation.</p>
             </div>
         </div>
     </div>

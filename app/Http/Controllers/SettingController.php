@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Setting;
+use Illuminate\Http\Request;
 
 class SettingController extends Controller
 {
@@ -35,20 +35,20 @@ class SettingController extends Controller
         ]);
 
         $userId = auth()->user()->tenant_id;
-        
+
         // Update admin user profile if provided
         if ($request->has('admin_name') && $request->has('admin_email')) {
             $user = auth()->user();
             $user->name = $validated['admin_name'];
             $user->email = $validated['admin_email'];
-            
+
             if ($request->hasFile('profile_image')) {
                 $path = $request->file('profile_image')->store('profile-photos', 'public');
                 $user->profile_photo_path = $path;
             }
-            
+
             $user->save();
-            
+
             unset($validated['admin_name']);
             unset($validated['admin_email']);
             unset($validated['profile_image']);

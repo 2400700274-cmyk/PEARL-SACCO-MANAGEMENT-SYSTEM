@@ -24,7 +24,7 @@
         <a href="{{ route('reports.index') }}" style="margin-left: 10px; text-decoration: none; color: #0078D4;">Back to Reports</a>
     </div>
 
-    <h1>{{ \App\Models\Setting::getValue('sacco_name', 'Kulima Agri-SACCO') }} System Report</h1>
+    <h1>{{ \App\Models\Setting::getValue('sacco_name', 'Pearl SACCO Management System') }} System Report</h1>
     <div class="subtitle">Generated on: {{ date('F j, Y, g:i a') }}</div>
     
     <h2>Key Metrics</h2>

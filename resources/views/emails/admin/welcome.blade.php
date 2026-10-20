@@ -1,5 +1,5 @@
 <x-mail::message>
-# Welcome to Kulima Agri-SACCO
+# Welcome to Pearl SACCO Management System
 
 Dear {{ $user->name }},
 

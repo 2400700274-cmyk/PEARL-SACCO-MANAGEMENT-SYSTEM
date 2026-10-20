@@ -79,7 +79,7 @@
                         <div class="grid grid-cols-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
                             <div class="form-group">
                                 <label class="form-label">SACCO Name</label>
-                                <input type="text" name="sacco_name" value="{{ \App\Models\Setting::getValue('sacco_name', 'Kulima Agri-SACCO') }}" class="form-control" required>
+                                <input type="text" name="sacco_name" value="{{ \App\Models\Setting::getValue('sacco_name', 'Pearl SACCO Management System') }}" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Registration Number</label>

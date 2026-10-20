@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Kulima Agri-SACCO')</title>
+    <title>@yield('title', 'Pearl SACCO Management System')</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
         :root {
             --nav-height: 80px;
@@ -38,13 +39,14 @@
         }
 
         .navbar-brand {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 700;
             color: var(--primary-color);
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 10px;
+            letter-spacing: -0.3px;
         }
 
         .navbar-links {
@@ -75,7 +77,7 @@
             color: var(--primary-color);
             background: transparent;
             padding: 8px 24px;
-            border-radius: 4px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.2s;
@@ -90,7 +92,7 @@
             background: var(--primary-color);
             color: white;
             padding: 10px 24px;
-            border-radius: 4px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
             transition: background 0.2s;
@@ -163,16 +165,30 @@
         }
         
         .section-header h2 {
-            font-size: 36px;
+            font-size: 34px;
             color: var(--primary-color);
             margin-bottom: 16px;
         }
         
         .section-header p {
-            font-size: 18px;
+            font-size: 17px;
             color: var(--text-secondary);
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto;
+        }
+
+        @media (max-width: 900px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 600px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .navbar-links {
+                display: none;
+            }
         }
     </style>
     @yield('styles')
@@ -181,20 +197,22 @@
     
     <nav class="navbar">
         <a href="{{ route('home') }}" class="navbar-brand">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-            Kulima Agri-SACCO
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+            Pearl SACCO Management System
         </a>
 
         <div class="navbar-links">
             <a href="{{ route('home') }}">Home</a>
-            <a href="{{ route('about') }}">About Us</a>
-            <a href="{{ route('services') }}">Services</a>
-            <a href="{{ route('contact') }}">Contact</a>
+            <a href="{{ route('about') }}">About Platform</a>
+            <a href="{{ route('services') }}">Services & Modules</a>
+            <a href="{{ route('contact') }}">Contact & Inquiries</a>
         </div>
 
         <div class="navbar-actions">
             @auth
-                <a href="{{ route('dashboard') }}" class="btn-solid">Dashboard</a>
+                <a href="{{ auth()->user()->isSuperAdmin() ? route('saccos.index') : route('dashboard') }}" class="btn-solid">
+                    {{ auth()->user()->isSuperAdmin() ? 'Manage SACCOs' : 'Dashboard' }}
+                </a>
             @else
                 <a href="{{ route('login') }}" class="btn-outline">Sign In</a>
                 <a href="{{ route('register') }}" class="btn-solid">Register SACCO</a>
@@ -209,36 +227,37 @@
             <div class="footer-grid">
                 <div>
                     <h3 style="display: flex; align-items: center; gap: 10px;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-                        Kulima Agri-SACCO
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                        Pearl SACCO Management System
                     </h3>
-                    <p>The premier operating system built specifically to digitize, secure, and scale agricultural cooperative societies across East Africa.</p>
+                    <p>The centralized multi-SACCO management platform governing credit societies, cooperative compliance, and financial records throughout Uganda.</p>
                 </div>
                 <div>
                     <h3>Quick Links</h3>
                     <a href="{{ route('home') }}">Home</a>
-                    <a href="{{ route('about') }}">About Us</a>
+                    <a href="{{ route('about') }}">About Platform</a>
                     <a href="{{ route('services') }}">Services</a>
-                    <a href="{{ route('contact') }}">Contact</a>
+                    <a href="{{ route('contact') }}">Contact Support</a>
                 </div>
                 <div>
-                    <h3>Resources</h3>
-                    <a href="#">Help Center</a>
-                    <a href="#">Documentation</a>
-                    <a href="#">Security</a>
+                    <h3>Governance</h3>
+                    <a href="#">Compliance Guidelines</a>
+                    <a href="#">Audit Protocols</a>
+                    <a href="#">Security Safeguards</a>
                     <a href="#">Privacy Policy</a>
                 </div>
                 <div>
-                    <h3>Contact</h3>
+                    <h3>Platform Support</h3>
                     <p>Kampala, Uganda</p>
-                    <p>support@kulima.app</p>
-                    <p>+256 800 123 456</p>
+                    <p>support@pearlsacco.org</p>
+                    <p>+256 800 247 000</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                &copy; {{ date('Y') }} Kulima Agri-SACCO. All rights reserved.
+                &copy; {{ date('Y') }} Pearl SACCO Management System. All rights reserved.
             </div>
         </footer>
     </div>
+    @yield('scripts')
 </body>
 </html>

@@ -183,6 +183,9 @@ a:hover {
     color: var(--text-secondary);
     margin-bottom: 4px;
 }
+.stats .stat-label {
+    color: #ffffff !important;
+}
 .stat-value {
     font-size: 24px;
     font-weight: 600;

@@ -20,8 +20,45 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
+            $user = Auth::user();
+
+            if ($user->status === 'Pending') {
+                Auth::logout();
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
+
+                return back()->withErrors([
+                    'email' => 'Your SACCO registration is pending review and authorization by the Pearl SACCO Management System administrator. Access to system services is restricted until approved.',
+                ])->onlyInput('email');
+            }
+
+            if ($user->status === 'Suspended') {
+                Auth::logout();
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
+
+                return back()->withErrors([
+                    'email' => 'This account has been suspended. Access to Pearl SACCO Management System services has been temporarily revoked.',
+                ])->onlyInput('email');
+            }
+
+            if ($user->status === 'Inactive') {
+                Auth::logout();
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
+
+                return back()->withErrors([
+                    'email' => 'This account is currently inactive. Please contact your SACCO or platform administrator.',
+                ])->onlyInput('email');
+            }
+
             $request->session()->regenerate();
-            return redirect()->intended('dashboard');
+
+            if ($user->isSuperAdmin()) {
+                return redirect()->intended(route('saccos.index'));
+            }
+
+            return redirect()->intended(route('dashboard'));
         }
 
         return back()->withErrors([
@@ -34,6 +71,7 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/');
+
+        return redirect()->route('home');
     }
 }

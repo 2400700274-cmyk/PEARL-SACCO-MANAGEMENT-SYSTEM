@@ -5,8 +5,15 @@
 @section('content')
     <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px;">
         <div>
-            <h1 style="font-size: 24px; color: var(--primary-color); margin-bottom: 4px;">Dashboard</h1>
-            <div style="font-size: 13px; color: var(--text-secondary);">Overview of SACCO Operations</div>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4px;">
+                <h1 style="font-size: 24px; color: var(--primary-color); margin: 0;">Dashboard</h1>
+                <span style="font-size: 12px; font-weight: 600; color: var(--primary-color); background: rgba(0, 120, 212, 0.1); border: 1px solid rgba(0, 120, 212, 0.2); padding: 3px 10px; border-radius: 12px;">
+                    Role: {{ auth()->user()->role?->name ?? 'Staff' }}
+                </span>
+            </div>
+            <div style="font-size: 13px; color: var(--text-secondary);">
+                Welcome back, <strong>{{ auth()->user()->name }}</strong>. Overview of {{ \App\Models\Setting::getValue('sacco_name', 'SACCO') }} Operations.
+            </div>
         </div>
         <div style="font-size: 13px; color: var(--text-secondary);">
             {{ date('l, F j, Y') }}

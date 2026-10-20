@@ -2,30 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Member;
-use App\Models\SavingsAccount;
 use App\Models\Loan;
+use App\Models\Member;
 use App\Models\Repayment;
-use Illuminate\Support\Facades\DB;
+use App\Models\SavingsAccount;
 
 class ReportController extends Controller
 {
     public function index()
     {
         $userId = auth()->user()->tenant_id;
-        $memberIds = \App\Models\Member::where('user_id', $userId)->pluck('id');
+        $memberIds = Member::where('user_id', $userId)->pluck('id');
 
         $metrics = [
-            'total_members' => \App\Models\Member::where('user_id', $userId)->count(),
-            'active_members' => \App\Models\Member::where('user_id', $userId)->where('status', 'Active')->count(),
-            
+            'total_members' => Member::where('user_id', $userId)->count(),
+            'active_members' => Member::where('user_id', $userId)->where('status', 'Active')->count(),
+
             'total_savings' => SavingsAccount::whereIn('member_id', $memberIds)->sum('balance'),
-            
+
             'total_loans_disbursed' => Loan::whereIn('member_id', $memberIds)->whereIn('status', ['Active', 'Completed'])->sum('principal_amount'),
             'outstanding_loan_balance' => Loan::whereIn('member_id', $memberIds)->where('status', 'Active')->sum('balance'),
-            
-            'total_repayments' => Repayment::whereHas('loan', function($q) use ($memberIds) {
+
+            'total_repayments' => Repayment::whereHas('loan', function ($q) use ($memberIds) {
                 $q->whereIn('member_id', $memberIds);
             })->sum('amount'),
         ];
@@ -35,10 +33,10 @@ class ReportController extends Controller
         // Chart Data: Savings vs Outstanding Loans
         $totalSavings = $metrics['total_savings'];
         $outstandingLoans = $metrics['outstanding_loan_balance'];
-        
+
         $chartData = [
             'labels' => ['Total Savings (UGX)', 'Outstanding Loans (UGX)'],
-            'data' => [$totalSavings, $outstandingLoans]
+            'data' => [$totalSavings, $outstandingLoans],
         ];
 
         return view('reports.index', compact('metrics', 'recentLoans', 'chartData'));
@@ -47,11 +45,11 @@ class ReportController extends Controller
     public function exportExcel()
     {
         $headers = [
-            "Content-type" => "text/csv",
-            "Content-Disposition" => "attachment; filename=sacco_report_" . date('Y-m-d') . ".csv",
-            "Pragma" => "no-cache",
-            "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
-            "Expires" => "0"
+            'Content-type' => 'text/csv',
+            'Content-Disposition' => 'attachment; filename=sacco_report_'.date('Y-m-d').'.csv',
+            'Pragma' => 'no-cache',
+            'Cache-Control' => 'must-revalidate, post-check=0, pre-check=0',
+            'Expires' => '0',
         ];
 
         $metrics = [
@@ -62,7 +60,7 @@ class ReportController extends Controller
             'Total Repayments (UGX)' => Repayment::sum('amount'),
         ];
 
-        $callback = function() use ($metrics) {
+        $callback = function () use ($metrics) {
             $file = fopen('php://output', 'w');
             fputcsv($file, ['Metric', 'Value']);
             foreach ($metrics as $key => $value) {

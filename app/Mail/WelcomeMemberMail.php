@@ -2,15 +2,14 @@
 
 namespace App\Mail;
 
+use App\Models\Member;
+use App\Models\Setting;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-
-use App\Models\Member;
 
 class WelcomeMemberMail extends Mailable
 {
@@ -32,7 +31,7 @@ class WelcomeMemberMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Welcome to ' . \App\Models\Setting::getValue('sacco_name', 'Kulima Agri-SACCO'),
+            subject: 'Welcome to '.Setting::getValue('sacco_name', 'Pearl SACCO Management System'),
         );
     }
 

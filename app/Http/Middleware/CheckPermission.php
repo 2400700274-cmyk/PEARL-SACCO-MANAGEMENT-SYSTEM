@@ -10,11 +10,11 @@ class CheckPermission
 {
     public function handle(Request $request, Closure $next, $permission): Response
     {
-        if (!auth()->check()) {
+        if (! auth()->check()) {
             return redirect('login');
         }
 
-        if (!auth()->user()->hasPermission($permission)) {
+        if (! auth()->user()->hasPermission($permission)) {
             abort(403, 'Unauthorized action. You do not have permission to access this resource.');
         }
 

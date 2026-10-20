@@ -17,5 +17,5 @@ We are pleased to inform you that your loan application has been approved!
 The funds will be disbursed to you shortly according to your requested payout method. If you have any questions, please contact our office.
 
 Thanks,<br>
-{{ \App\Models\Setting::getValue('sacco_name', 'Kulima Agri-SACCO') }}
+{{ \App\Models\Setting::getValue('sacco_name', 'Pearl SACCO Management System') }}
 </x-mail::message>

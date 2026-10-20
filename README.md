@@ -1,28 +1,27 @@
-# Kulima Agri-SACCO
+# Pearl SACCO Management System
 
-The premier operating system built specifically to digitize, secure, and scale agricultural cooperative societies across East Africa.
+The multi-tenant management system built specifically to digitize, oversee, and empower Savings and Credit Cooperative Organizations (SACCOs) across Uganda and East Africa.
 
 ## 🚀 Features
 
-- **Multi-Tenant Architecture**: Create isolated workspaces for different SACCOs securely.
-- **Member Management**: Keep a unified digital registry of all members with National ID (NIN) tracking and profile photos.
-- **Savings & Deposits**: Track member contributions accurately with automated balance calculations and complete transaction histories.
-- **Loan & Credit Processing**: End-to-end credit management. Track applications, calculate interest, manage multi-stage approvals, and monitor repayments.
-- **Role-Based Access Control (RBAC)**: Fine-grained permissions for administrators, loan officers, and tellers using Spatie Permissions.
-- **Beautiful, Premium UI**: A modern, responsive, enterprise-grade design system built for professional environments.
-- **Automated Notifications**: Welcome emails, credential dispatching, and password resets powered by Brevo.
+- **Multi-SACCO Oversight**: Master administration to monitor registered SACCOs, member totals, and aggregate savings/loan liquidity.
+- **Controlled Onboarding**: SACCO registrations are reviewed and activated by system administrators to maintain institutional security.
+- **Member Management**: Unified digital registry with Ugandan NIRA NIN validation, Next of Kin records, and profile photos.
+- **Savings & Deposits**: Member contributions and withdrawals with transaction logs and reserve lock protection against active loans.
+- **Loan & Credit Processing**: Repayment progress tracking, loan maturity dates, late penalty fees, guarantor verification, and collateral safeguards.
+- **Role-Based Access Control (RBAC)**: Clear role allocation and visual badges for Super Administrators, SACCO Admins, Loan Officers, and Tellers.
+- **Real-Time Email Verification**: Instant domain DNS MX record check and database presence validation during input.
+- **Premium UI & Modern Theme**: High-contrast, accessible design system with glassmorphic cards and intuitive workflows.
 
 ## 🛠️ Tech Stack
 
-- **Framework**: [Laravel 11](https://laravel.com)
+- **Framework**: Laravel 11 / 12
 - **Language**: PHP 8.2+
-- **Frontend**: Blade Templating Engine + Vanilla CSS (Custom Design System)
-- **Database**: MySQL / SQLite
+- **Frontend**: Blade Templating Engine + Vanilla CSS Design System
+- **Database**: SQLite / MySQL
 - **Mailing**: SMTP via Brevo
 
 ## 💻 Local Setup & Installation
-
-Follow these steps to get the project running on your local machine:
 
 1. **Clone the repository**
    ```bash
@@ -30,72 +29,39 @@ Follow these steps to get the project running on your local machine:
    cd kulima-agri-sacco
    ```
 
-2. **Install PHP Dependencies**
+2. **Install PHP & Frontend Dependencies**
    ```bash
    composer install
+   npm install && npm run build
    ```
 
 3. **Environment Setup**
-   Copy the example environment file and generate a new application key:
    ```bash
    copy .env.example .env
    php artisan key:generate
    ```
 
-4. **Database Configuration**
-   Update your `.env` file with your database credentials. 
-   ```env
-   DB_CONNECTION=mysql
-   DB_HOST=127.0.0.1
-   DB_PORT=3306
-   DB_DATABASE=kulima_db
-   DB_USERNAME=root
-   DB_PASSWORD=
-   ```
-
-5. **Mail Configuration (Brevo)**
-   Ensure your SMTP settings are configured in the `.env` to allow email sending (e.g., Staff welcome emails):
-   ```env
-   MAIL_MAILER=smtp
-   MAIL_HOST=smtp-relay.brevo.com
-   MAIL_PORT=587
-   MAIL_USERNAME=bb8388001@smtp-brevo.com
-   MAIL_PASSWORD=your_brevo_password
-   MAIL_ENCRYPTION=tls
-   MAIL_FROM_ADDRESS="mathewx027@gmail.com"
-   MAIL_FROM_NAME="kulima agri-SACCO"
-   ```
-
-6. **Run Migrations & Seeders**
-   This will set up the database schema and inject the required default roles and permissions:
+4. **Run Migrations & Seeders**
    ```bash
-   php artisan migrate:fresh --seed
+   php artisan migrate --seed
    ```
 
-7. **Link Storage**
-   Link the storage directory to allow public access to uploaded member and staff profile photos:
-   ```bash
-   php artisan storage:link
-   ```
-
-8. **Start the Development Server**
+5. **Start Development Server**
    ```bash
    php artisan serve
    ```
    Visit `http://localhost:8000` in your browser.
 
-## 👥 Usage Workflow
+## 👥 Default Accounts (Seeded)
 
-1. Navigate to the **Home Page** and click **Register SACCO**.
-2. Fill in the organization details and the primary administrator's account information.
-3. Upon registration, log in and you will be directed to the dashboard.
-4. From the dashboard, administrators can create new Staff accounts (which auto-emails their credentials) and configure System Settings.
-5. Begin registering members and managing financial workflows.
+- **Super Administrator**:
+  - Email: `admin@pearlsacco.org`
+  - Password: `password`
 
 ## 🛡️ Security & Support
 
-If you discover any security-related issues, please contact the administrative team directly at `support@kulima.app` instead of using the issue tracker.
+For support or security inquiries, please contact `support@pearlsacco.org`.
 
 ## 📄 License
 
-This project is proprietary software developed for Kulima Agri-SACCO. All rights reserved.
+This software is developed for the Pearl SACCO Management System. All rights reserved.

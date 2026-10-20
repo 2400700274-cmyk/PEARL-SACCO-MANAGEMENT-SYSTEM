@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Repayment;
 use App\Models\Loan;
+use App\Models\Repayment;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class RepaymentController extends Controller
 {
     public function index()
     {
-        $repayments = Repayment::whereHas('loan.member', function($q) {
+        $repayments = Repayment::whereHas('loan.member', function ($q) {
             $q->where('user_id', auth()->user()->tenant_id);
         })->with('loan.member')->orderBy('id', 'desc')->paginate(15);
+
         return view('repayments.index', compact('repayments'));
     }
 
@@ -33,7 +34,7 @@ class RepaymentController extends Controller
         }
 
         $validated = $request->validate([
-            'amount' => ['required', 'numeric', 'min:1', 'max:' . $loan->balance],
+            'amount' => ['required', 'numeric', 'min:1', 'max:'.$loan->balance],
             'paid_at' => ['required', 'date'],
         ]);
 

@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -15,7 +16,9 @@ class WelcomeStaffMail extends Mailable implements ShouldQueue
     use Queueable, SerializesModels;
 
     public $staff;
+
     public $plainPassword;
+
     public $saccoName;
 
     /**
@@ -34,7 +37,7 @@ class WelcomeStaffMail extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Welcome to ' . $this->saccoName . ' - Your Staff Account Details',
+            subject: 'Welcome to '.$this->saccoName.' - Your Staff Account Details',
         );
     }
 
@@ -51,7 +54,7 @@ class WelcomeStaffMail extends Mailable implements ShouldQueue
     /**
      * Get the attachments for the message.
      *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
+     * @return array<int, Attachment>
      */
     public function attachments(): array
     {

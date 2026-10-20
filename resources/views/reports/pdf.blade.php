@@ -14,7 +14,7 @@
     </style>
 </head>
 <body>
-    <h1>Kulima Agri-SACCO System Report</h1>
+    <h1>{{ \App\Models\Setting::getValue('sacco_name', 'Pearl SACCO Management System') }} Report</h1>
     <p>Generated on: {{ date('F j, Y') }}</p>
     
     <h2>Key Metrics</h2>

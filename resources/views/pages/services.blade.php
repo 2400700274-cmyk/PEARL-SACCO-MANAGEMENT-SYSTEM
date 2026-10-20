@@ -1,11 +1,11 @@
 @extends('components.layouts.frontend')
 
-@section('title', 'Services - Kulima Agri-SACCO')
+@section('title', 'Services & Modules - Pearl SACCO Management System')
 
 @section('styles')
 <style>
     .hero-services {
-        background: linear-gradient(rgba(0, 80, 150, 0.8), rgba(0, 80, 150, 0.9)), url('{{ asset("images/hero.jpg") }}') center/cover;
+        background: linear-gradient(135deg, rgba(0, 43, 94, 0.88), rgba(0, 120, 212, 0.85)), url('{{ asset("images/hero.jpg") }}') center/cover;
         color: white;
         padding: 100px 5% 80px;
         text-align: center;
@@ -22,7 +22,7 @@
         gap: 60px;
         align-items: center;
         max-width: 1200px;
-        margin: 0 auto 100px;
+        margin: 0 auto 80px;
     }
     
     .service-block:nth-child(even) {
@@ -35,14 +35,14 @@
     
     .service-image {
         width: 100%;
-        border-radius: 8px;
+        border-radius: 12px;
         box-shadow: 0 15px 30px rgba(0,0,0,0.1);
     }
     
     .service-content h2 {
-        font-size: 32px;
+        font-size: 30px;
         color: var(--primary-color);
-        margin-bottom: 20px;
+        margin-bottom: 18px;
     }
     
     .service-content p {
@@ -64,59 +64,69 @@
         gap: 12px;
         color: var(--text-primary);
         font-weight: 500;
+        font-size: 15px;
+    }
+
+    @media (max-width: 768px) {
+        .service-block {
+            grid-template-columns: 1fr;
+            direction: ltr !important;
+        }
     }
 </style>
 @endsection
 
 @section('content')
     <div class="hero-services">
-        <h1 style="font-size: 48px; margin-bottom: 20px; color: white;">Our Services</h1>
-        <p style="font-size: 20px; max-width: 800px; margin: 0 auto; opacity: 0.9;">A comprehensive suite of tools designed specifically to handle the unique financial workflows of Agricultural SACCOs.</p>
+        <h1 style="font-size: 44px; margin-bottom: 20px; color: white;">Platform Modules & Capabilities</h1>
+        <p style="font-size: 19px; max-width: 800px; margin: 0 auto; opacity: 0.95; line-height: 1.6;">A complete governance suite built to manage SACCOs, track credit disbursements, apply recovery penalties, and enforce member accountability.</p>
     </div>
     
     <div class="services-container">
         
         <div class="service-block">
             <div>
-                <img src="{{ asset('images/visual.jpg') }}" alt="Member Management" class="service-image">
+                <img src="{{ asset('images/visual.jpg') }}" alt="Member Registry" class="service-image">
             </div>
             <div class="service-content">
-                <h2>Member Management</h2>
-                <p>Keep a unified, digital registry of all your cooperative members. Ditch the paper files and instantly access member profiles, histories, and contact information.</p>
+                <h2>Member Governance & Next of Kin</h2>
+                <p>Maintain authenticated member records compliant with Ugandan regulatory standards. Every member is verified with mandatory Next of Kin emergency details and official 14-character Ugandan NIRA NINs.</p>
                 <ul class="feature-list">
-                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Secure National ID (NIN) tracking</li>
-                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Profile photo uploads</li>
-                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Member status toggling (Active/Suspended)</li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Next of Kin name, contact, relationship & address documentation</li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Strict Uganda NIRA 14-character NIN validation</li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Real-time email syntax and domain existence checks</li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Account status enforcement (Active, Inactive, Suspended)</li>
                 </ul>
             </div>
         </div>
 
         <div class="service-block">
             <div>
-                <img src="{{ asset('images/about.jpg') }}" alt="Savings & Deposits" class="service-image">
+                <img src="{{ asset('images/about.jpg') }}" alt="Savings Security" class="service-image">
             </div>
             <div class="service-content">
-                <h2>Savings & Deposits</h2>
-                <p>Track member contributions and savings accurately in real-time. Members can have complete confidence that their funds are securely recorded and accounted for.</p>
+                <h2>Savings Safeguards & Collateral Holds</h2>
+                <p>Protect member capital with automated ledger reconciliation. Suspended and inactive members are strictly prohibited from depositing or withdrawing funds, and active borrowers cannot drain savings used to secure active credit.</p>
                 <ul class="feature-list">
-                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Automated balance calculations</li>
-                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Full transaction history per member</li>
-                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Deposit and withdrawal management</li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Restricted access for inactive and suspended accounts</li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Automated loan security reserve holds against outstanding loans</li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Immediate audit logging for every financial entry</li>
                 </ul>
             </div>
         </div>
 
         <div class="service-block">
             <div>
-                <img src="{{ asset('images/hero.jpg') }}" alt="Loan Processing" class="service-image">
+                <img src="{{ asset('images/hero.jpg') }}" alt="Credit & Penalties" class="service-image">
             </div>
             <div class="service-content">
-                <h2>Loan & Credit Processing</h2>
-                <p>Streamline your lending process. From application to approval and repayment tracking, manage the entire lifecycle of agricultural loans efficiently.</p>
+                <h2>Loan Tracking, Late Penalties & Recovery</h2>
+                <p>End-to-end credit management with visual progress indicators tracking how far repayments have progressed. Apply enforceable late penalty fees and default suspensions so members cannot default without accountability.</p>
                 <ul class="feature-list">
-                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Multi-stage approval workflows</li>
-                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Interest rate calculation</li>
-                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Repayment tracking and arrears alerts</li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Real-time repayment progress bars and maturity countdowns</li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> One-click late penalty fee application (fixed or percentage)</li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Collateral documentation and verified Guarantor NIN tracking</li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Auto-suspension security protocol for defaulted credit</li>
                 </ul>
             </div>
         </div>

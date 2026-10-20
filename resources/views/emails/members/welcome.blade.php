@@ -1,5 +1,5 @@
 <x-mail::message>
-# Welcome to {{ \App\Models\Setting::getValue('sacco_name', 'Kulima Agri-SACCO') }}, {{ $member->name }}!
+# Welcome to {{ \App\Models\Setting::getValue('sacco_name', 'Pearl SACCO Management System') }}, {{ $member->name }}!
 
 We are thrilled to welcome you as a member of our SACCO. Your registration is complete and your Member Number is **{{ $member->member_number }}**.
 
@@ -13,5 +13,5 @@ We are thrilled to welcome you as a member of our SACCO. Your registration is co
 We look forward to growing together. Please keep your member number safe as you will need it for transactions.
 
 Thanks,<br>
-{{ \App\Models\Setting::getValue('sacco_name', 'Kulima Agri-SACCO') }}
+{{ \App\Models\Setting::getValue('sacco_name', 'Pearl SACCO Management System') }}
 </x-mail::message>

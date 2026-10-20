@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Attributes\Fillable;
 
-#[Fillable(['user_id', 'member_number', 'name', 'nin', 'contact', 'status', 'registered_at', 'passport_photo_path'])]
+#[Fillable(['user_id', 'member_number', 'name', 'nin', 'contact', 'next_of_kin_name', 'next_of_kin_contact', 'next_of_kin_relationship', 'next_of_kin_address', 'status', 'registered_at', 'passport_photo_path'])]
 class Member extends Model
 {
     protected function casts(): array

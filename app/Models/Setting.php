@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Model;
 
 #[Fillable(['user_id', 'key', 'value'])]
 class Setting extends Model
@@ -14,7 +14,7 @@ class Setting extends Model
     public static function getValue($key, $default = null)
     {
         $userId = auth()->check() ? auth()->user()->tenant_id : null;
-        
+
         // If getting sacco_name and it doesn't exist, default to the user's name
         if ($key === 'sacco_name' && $userId && auth()->user()) {
             $default = auth()->user()->name;
@@ -25,9 +25,12 @@ class Setting extends Model
             $default = auth()->user()->email;
         }
 
-        if (!$userId) return $default;
+        if (! $userId) {
+            return $default;
+        }
 
         $setting = static::where('user_id', $userId)->where('key', $key)->first();
+
         return $setting ? $setting->value : $default;
     }
 }

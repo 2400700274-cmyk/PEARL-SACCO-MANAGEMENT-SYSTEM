@@ -2,19 +2,20 @@
 
 namespace App\Mail;
 
+use App\Models\User;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use App\Models\User;
 
 class WelcomeAdminMail extends Mailable
 {
     use Queueable, SerializesModels;
 
     public $user;
+
     public $saccoName;
 
     /**
@@ -32,7 +33,7 @@ class WelcomeAdminMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Welcome to Kulima Agri-SACCO - Your Workspace is Ready',
+            subject: 'Welcome to '.($this->saccoName ?: 'Pearl SACCO Management System').' - Your Workspace is Ready',
         );
     }
 
@@ -49,7 +50,7 @@ class WelcomeAdminMail extends Mailable
     /**
      * Get the attachments for the message.
      *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
+     * @return array<int, Attachment>
      */
     public function attachments(): array
     {

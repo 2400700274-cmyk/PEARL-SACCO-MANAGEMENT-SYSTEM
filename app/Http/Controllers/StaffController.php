@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Mail\WelcomeStaffMail;
 use App\Models\Role;
+use App\Models\Setting;
+use App\Models\User;
+use App\Rules\UgandanNin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\WelcomeStaffMail;
-use App\Models\Setting;
+use Illuminate\Validation\Rules\Password;
 
 class StaffController extends Controller
 {
@@ -17,12 +18,14 @@ class StaffController extends Controller
     {
         $tenantId = auth()->user()->tenant_id;
         $staff = User::where('parent_id', $tenantId)->with('role')->get();
+
         return view('staff.index', compact('staff'));
     }
 
     public function create()
     {
         $roles = Role::whereIn('slug', ['loan-officer', 'cashier'])->get();
+
         return view('staff.create', compact('roles'));
     }
 
@@ -30,7 +33,7 @@ class StaffController extends Controller
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'nin' => ['required', 'string', 'max:255', 'unique:'.User::class],
+            'nin' => ['required', 'string', new UgandanNin, 'unique:'.User::class],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Password::defaults()],
             'role_id' => ['required', 'exists:roles,id'],
@@ -44,7 +47,7 @@ class StaffController extends Controller
 
         $user = User::create([
             'name' => $validated['name'],
-            'nin' => $validated['nin'],
+            'nin' => strtoupper(preg_replace('/\s+/', '', $validated['nin'])),
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
             'role_id' => $validated['role_id'],
@@ -53,8 +56,8 @@ class StaffController extends Controller
             'profile_photo_path' => $path,
         ]);
 
-        $saccoName = Setting::getValue('sacco_name', 'Kulima Agri-SACCO', auth()->user()->tenant_id);
-        
+        $saccoName = Setting::getValue('sacco_name', 'Pearl SACCO Management System', auth()->user()->tenant_id);
+
         Mail::to($user->email)->send(new WelcomeStaffMail($user, $validated['password'], $saccoName));
 
         return redirect()->route('staff.index')->with('success', 'Staff account created successfully. An email has been sent to them with their login details.');
