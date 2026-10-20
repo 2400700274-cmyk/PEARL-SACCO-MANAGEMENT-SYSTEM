@@ -169,8 +169,8 @@
             <h1>The Central Management System for SACCOs</h1>
             <p>Pearl SACCO Management System provides a unified, secure operating system designed to register, regulate, audit, and manage cooperative societies across Uganda with automated credit tracking, savings ledgers, and compliance.</p>
             <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-                <a href="{{ route('register') }}" class="btn-solid" style="padding: 12px 32px; font-size: 16px;">Apply to Register SACCO</a>
-                <a href="{{ route('about') }}" class="btn-outline" style="padding: 12px 32px; font-size: 16px; color: white; border-color: white;">System Overview</a>
+                <a href="{{ route('login') }}" class="btn-solid" style="padding: 12px 32px; font-size: 16px;">Access Management Portal</a>
+                <a href="{{ route('about') }}" class="btn-outline" style="padding: 12px 32px; font-size: 16px; color: white; border-color: white;">Platform Capabilities</a>
             </div>
         </div>
     </div>
@@ -227,8 +227,11 @@
     </div>
 
     <div class="cta">
-        <h2 style="font-size: 34px; margin-bottom: 16px; color: var(--primary-color);">Onboard Your SACCO to Pearl SACCO System</h2>
-        <p style="font-size: 17px; color: var(--text-secondary); max-width: 650px; margin: 0 auto 32px;">Join Uganda's leading multi-SACCO management ecosystem. Submit your registration application for verification and activation by our platform administration team.</p>
-        <a href="{{ route('register') }}" class="btn-solid" style="padding: 14px 40px; font-size: 17px;">Apply for SACCO Registration</a>
+        <h2 style="font-size: 34px; margin-bottom: 16px; color: var(--primary-color);">Cooperative Governance & Oversight</h2>
+        <p style="font-size: 17px; color: var(--text-secondary); max-width: 650px; margin: 0 auto 32px;">Pearl SACCO Management System is an enterprise platform. SACCO registrations and tenant provisioning are handled directly by system administrators to maintain institutional security and compliance.</p>
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+            <a href="{{ route('login') }}" class="btn-solid" style="padding: 14px 36px; font-size: 16px;">Sign In to Workspace</a>
+            <a href="{{ route('contact') }}" class="btn-outline" style="padding: 14px 36px; font-size: 16px;">Contact Central Administration</a>
+        </div>
     </div>
 @endsection

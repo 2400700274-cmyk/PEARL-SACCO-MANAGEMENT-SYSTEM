@@ -185,8 +185,9 @@
             
             <button type="submit" class="btn btn-primary btn-login">Sign In</button>
 
-            <div style="text-align: center; margin-top: 24px; font-size: 13px;">
-                Looking to onboard a new cooperative? <a href="{{ route('register') }}" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">Apply to register SACCO</a>
+            <div style="text-align: center; margin-top: 24px; font-size: 13px; color: var(--text-secondary); line-height: 1.5;">
+                SACCO workspaces are provisioned by central administration.<br>
+                Need access? <a href="{{ route('contact') }}" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">Contact Administration</a>
             </div>
             
             <div style="text-align: center; margin-top: 14px;">
