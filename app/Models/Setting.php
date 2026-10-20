@@ -13,24 +13,33 @@ class Setting extends Model
      */
     public static function getValue($key, $default = null)
     {
-        $userId = auth()->check() ? auth()->user()->tenant_id : null;
-
-        // If getting sacco_name and it doesn't exist, default to the user's name
-        if ($key === 'sacco_name' && $userId && auth()->user()) {
-            $default = auth()->user()->name;
-        }
-
-        // If getting email and it doesn't exist, default to the user's email
-        if ($key === 'email' && $userId && auth()->user()) {
-            $default = auth()->user()->email;
-        }
+        $user = auth()->user();
+        $userId = $user ? $user->tenant_id : null;
 
         if (! $userId) {
             return $default;
         }
 
         $setting = static::where('user_id', $userId)->where('key', $key)->first();
+        if ($setting && ! empty($setting->value)) {
+            return $setting->value;
+        }
 
-        return $setting ? $setting->value : $default;
+        if ($key === 'sacco_name') {
+            if ($user && $user->sacco) {
+                return $user->sacco->name;
+            }
+            if ($user && $user->isSuperAdmin()) {
+                return 'Pearl SACCO Management System';
+            }
+
+            return $default ?: 'Pearl SACCO Management System';
+        }
+
+        if ($key === 'email' && $user) {
+            return $user->email;
+        }
+
+        return $default;
     }
 }
