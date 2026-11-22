@@ -10,6 +10,10 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        if (auth()->user()->isMember()) {
+            return redirect()->route('member.dashboard');
+        }
+
         $userId = auth()->user()->tenant_id;
 
         // Base query for user's members

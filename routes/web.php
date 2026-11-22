@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmailVerificationController;
 use App\Http\Controllers\LoanController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\MemberDashboardController;
 use App\Http\Controllers\RepaymentController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SaccoController;
@@ -102,4 +103,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/savings/{saving}/transaction', [SavingsController::class, 'createTransaction'])->name('savings.transaction')->middleware('permission:transact-savings');
         Route::post('/savings/{saving}/transaction', [SavingsController::class, 'storeTransaction'])->name('savings.transaction.store')->middleware('permission:transact-savings');
     });
+
+    // Member Self-Service Portal (Requirements MD-009, MD-014, MD-020, MD-021, MD-024, MD-026, MD-027, MD-028)
+    Route::get('/member/dashboard', [MemberDashboardController::class, 'index'])->name('member.dashboard');
+    Route::post('/member/loans/apply', [MemberDashboardController::class, 'applyLoan'])->name('member.loans.apply');
+    Route::get('/member/savings/statement', [MemberDashboardController::class, 'downloadSavingsStatement'])->name('member.savings.statement');
+    Route::get('/member/loans/{loan}/statement', [MemberDashboardController::class, 'downloadLoanStatement'])->name('member.loans.statement');
+    Route::post('/member/password', [MemberDashboardController::class, 'updatePassword'])->name('member.password.update');
 });

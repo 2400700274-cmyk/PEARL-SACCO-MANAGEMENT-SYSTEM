@@ -86,7 +86,10 @@
         
         <div class="service-block">
             <div>
-                <img src="{{ asset('images/visual.jpg') }}" alt="Member Registry" class="service-image">
+                <img src="{{ asset('images/sacco-members.jpg') }}" alt="Ugandan SACCO members meeting to discuss their cooperative" class="service-image">
+                <small style="display: block; margin-top: 8px; color: var(--text-secondary);">
+                    Photo: <a href="https://commons.wikimedia.org/wiki/File:Albert_with_coffee_farmers_Uganda.jpg" target="_blank" rel="noopener noreferrer">Andy Carlton / Wikimedia Commons</a> (CC BY-SA 4.0)
+                </small>
             </div>
             <div class="service-content">
                 <h2>Member Governance & Next of Kin</h2>

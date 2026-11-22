@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MUBS Research Project Report - Kulima Agri SACCO</title>
+<style>
+    @page {
+        size: A4;
+        margin: 1.0in 1.0in 1.0in 1.25in;
+    }
+    body {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 12pt;
+        line-height: 1.5;
+        color: #111;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 30px 10px;
+    }
+    .document-container {
+        max-width: 820px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 60px 50px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        border-radius: 4px;
+    }
+    .no-print-bar {
+        max-width: 820px;
+        margin: 0 auto 20px auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #0078d4;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 6px;
+        font-family: sans-serif;
+    }
+    .no-print-bar button {
+        background: white;
+        color: #0078d4;
+        font-weight: bold;
+        border: none;
+        padding: 8px 18px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    h1.chapter-title {
+        font-size: 14pt;
+        font-weight: bold;
+        text-align: center;
+        text-transform: uppercase;
+        margin-top: 36px;
+        margin-bottom: 18px;
+    }
+    h2.section-title {
+        font-size: 12pt;
+        font-weight: bold;
+        text-align: left;
+        margin-top: 24px;
+        margin-bottom: 12px;
+    }
+    h3.subsection-title {
+        font-size: 12pt;
+        font-weight: bold;
+        font-style: italic;
+        text-align: left;
+        margin-top: 18px;
+        margin-bottom: 8px;
+    }
+    p.body-p {
+        text-align: justify;
+        margin: 0 0 12px 0;
+        text-indent: 0;
+    }
+    p.cover-center {
+        text-align: center;
+        margin: 0 0 10px 0;
+    }
+    li.bullet-item {
+        margin-left: 24px;
+        margin-bottom: 6px;
+        text-align: justify;
+    }
+    .page-break {
+        border-top: 1px dashed #bbb;
+        margin: 40px 0;
+        position: relative;
+    }
+    .page-break::after {
+        content: "[ Page Break ]";
+        position: absolute;
+        top: -10px;
+        right: 0;
+        background: #fff;
+        font-size: 9pt;
+        color: #888;
+        font-family: sans-serif;
+        padding-left: 8px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 11pt;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px 12px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f4f7;
+        font-weight: bold;
+    }
+    pre {
+        background-color: #f6f8fa;
+        border: 1px solid #e1e4e8;
+        border-radius: 4px;
+        padding: 14px;
+        overflow-x: auto;
+        font-family: "Consolas", "Courier New", monospace;
+        font-size: 10pt;
+        line-height: 1.4;
+    }
+    @media print {
+        body {
+            background: none;
+            padding: 0;
+        }
+        .no-print-bar {
+            display: none !important;
+        }
+        .document-container {
+            box-shadow: none;
+            padding: 0;
+            max-width: 100%;
+        }
+        .page-break {
+            page-break-after: always;
+            border-top: none;
+            margin: 0;
+        }
+        .page-break::after {
+            display: none;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="no-print-bar">
+    <span><strong>MUBS Project Report Preview</strong> (Times New Roman 12pt, 1.5 line spacing)</span>
+    <button onclick="window.print()">Print / Save as PDF</button>
+</div>
+<div class="document-container">
+<h1 class="chapter-title">MAKERERE UNIVERSITY BUSINESS SCHOOL</h1><h2 class="section-title">FACULTY OF COMPUTING & INFORMATICS</h2><h1 class="chapter-title">DESIGN AND DEVELOPMENT OF A WEB-BASED MULTI-TENANT FINANCIAL MANAGEMENT SYSTEM FOR SAVINGS AND CREDIT COOPERATIVE SOCIETIES IN UGANDA: A CASE OF KULIMA AGRI SACCO</h1><h3 class="subsection-title">By</h3><div class="table-wrap"><table>
+<tr><th>Name</th><th>Registration Number</th><th>Phone Number</th></tr>
+<tr><td><strong>[First Name] [Last Name]</strong></td><td>[XX/U/XXXXX/PS]</td><td>[+256 7XXXXXXXX]</td></tr>
+<tr><td><strong>[First Name] [Last Name]</strong></td><td>[XX/U/XXXXX/EVE]</td><td>[+256 7XXXXXXXX]</td></tr>
+<tr><td><strong>[First Name] [Last Name]</strong></td><td>[XX/U/XXXXX/EVE]</td><td>[+256 7XXXXXXXX]</td></tr>
+<tr><td><strong>[First Name] [Last Name]</strong></td><td>[XX/U/XXXXX/PS]</td><td>[+256 7XXXXXXXX]</td></tr>
+</table></div><h3 class="subsection-title">Supervised by:</h3><p class="body-p"><strong>[Supervisor's Name, e.g., Dr. Albert Miwanda (PhD)]</strong></p><p class="body-p">Department of Applied Computing & IT</p><p class="body-p">Makerere University Business School</p><p class="body-p"><br><br></p><p class="cover-center"><strong>A Project Report Submitted to Makerere University Business School in Partial Fulfillment of the Requirements for the Award of the Degree of Bachelor of Business Computing of Makerere University</strong></p><p class="cover-center"><strong>November, 2026</strong></p><div class="page-break"></div><h1 class="chapter-title">PRELIMINARY PAGES</h1><h2 class="section-title">DECLARATION</h2><p class="body-p">We declare that this project report is our own original work. It has never been submitted before to Makerere University or any other institution of higher learning for any academic award.</p><div class="table-wrap"><table>
+<tr><th>Name</th><th>Registration Number</th><th>Signature</th></tr>
+<tr><td><strong>[Student Name 1]</strong></td><td>[XX/U/XXXXX/PS]</td><td>...................................</td></tr>
+<tr><td><strong>[Student Name 2]</strong></td><td>[XX/U/XXXXX/EVE]</td><td>...................................</td></tr>
+<tr><td><strong>[Student Name 3]</strong></td><td>[XX/U/XXXXX/EVE]</td><td>...................................</td></tr>
+<tr><td><strong>[Student Name 4]</strong></td><td>[XX/U/XXXXX/PS]</td><td>...................................</td></tr>
+</table></div><p class="body-p"><strong>Date:</strong> ...........................................................</p><div class="page-break"></div><h2 class="section-title">APPROVAL</h2><p class="body-p">This project report titled <strong>"Design and Development of a Web-Based Multi-Tenant Financial Management System for Savings and Credit Cooperative Societies in Uganda: A Case of Kulima Agri SACCO"</strong> has been compiled and submitted under my supervision as the university supervisor.</p><p class="body-p"><br><br></p><p class="body-p"><strong>Signed:</strong> ..........................................................................</p><p class="body-p"><strong>[Supervisor's Full Name]</strong></p><p class="body-p">Department of Applied Computing & IT</p><p class="body-p">Faculty of Computing & Informatics</p><p class="body-p">Makerere University Business School</p><p class="body-p"><strong>Date:</strong> ..............................................................................</p><div class="page-break"></div><h2 class="section-title">TABLE OF CONTENTS</h2><li class="bullet-item"><strong>DECLARATION</strong> ............................................................................................. ii</li><li class="bullet-item"><strong>APPROVAL</strong> .................................................................................................. iii</li><li class="bullet-item"><strong>TABLE OF CONTENTS</strong> ................................................................................. iv</li><li class="bullet-item"><strong>LIST OF FIGURES</strong> ........................................................................................ vi</li><li class="bullet-item"><strong>LIST OF TABLES</strong> ......................................................................................... vii</li><li class="bullet-item"><strong>LIST OF ABBREVIATIONS</strong> ......................................................................... viii</li><li class="bullet-item"><strong>ABSTRACT</strong> ................................................................................................... ix</li><li class="bullet-item"><strong>CHAPTER ONE: INTRODUCTION</strong> .............................................................. 1</li><li class="bullet-item">1.1 Background to the Study .......................................................................... 1</li><li class="bullet-item">1.2 Statement of the Problem ......................................................................... 2</li><li class="bullet-item">1.3 Purpose of the Study / General Objective ................................................ 3</li><li class="bullet-item">1.4 Specific Objectives of the Study ............................................................... 3</li><li class="bullet-item">1.5 Study Scope .............................................................................................. 3</li><li class="bullet-item">1.5.1 Subject Scope ..................................................................................... 3</li><li class="bullet-item">1.5.2 Geographical Scope ............................................................................ 4</li><li class="bullet-item">1.5.3 Time Scope .......................................................................................... 4</li><li class="bullet-item">1.6 Justification and Significance of the Study .............................................. 4</li><li class="bullet-item"><strong>CHAPTER TWO: LITERATURE REVIEW</strong> .................................................. 5</li><li class="bullet-item">2.0 Introduction ............................................................................................... 5</li><li class="bullet-item">2.1 Automated Financial Technologies and Financial Inclusion ................... 5</li><li class="bullet-item">2.2 Management of Savings and Credit Cooperative Societies .................... 6</li><li class="bullet-item">2.3 SACCOs in Uganda ................................................................................... 6</li><li class="bullet-item">2.4 Web-Based Financial Management Systems ........................................... 7</li><li class="bullet-item">2.5 Multi-Tenancy in Financial Software ........................................................ 7</li><li class="bullet-item">2.6 Designing and Developing SACCO Systems ........................................... 8</li><li class="bullet-item">2.7 Challenges Faced in Developing Systems for Rural SACCOs ................. 8</li><li class="bullet-item">2.7.1 Overcoming the Challenges ............................................................... 9</li><li class="bullet-item">2.8 Conclusion ................................................................................................. 9</li><li class="bullet-item"><strong>CHAPTER THREE: RESEARCH METHODOLOGY</strong> ................................... 10</li><li class="bullet-item">3.0 Introduction ............................................................................................... 10</li><li class="bullet-item">3.1 Research Design (Design Science Approach) ........................................ 10</li><li class="bullet-item">3.2 Study Population ....................................................................................... 11</li><li class="bullet-item">3.3 Sampling Technique and Sample Size .................................................... 11</li><li class="bullet-item">3.4 Sources of Data ......................................................................................... 11</li><li class="bullet-item">3.5 Data Collection and Requirements Elicitation Techniques ..................... 12</li><li class="bullet-item">3.6 Systems Analysis and Design Approach .................................................. 12</li><li class="bullet-item">3.7 System Development Method (Prototyping Approach) ............................ 13</li><li class="bullet-item">3.8 Ethical Considerations .............................................................................. 13</li><li class="bullet-item"><strong>CHAPTER FOUR: SYSTEMS ANALYSIS AND DESIGN</strong> ............................ 14</li><li class="bullet-item">4.0 Introduction ............................................................................................... 14</li><li class="bullet-item">4.1 Systems Investigation and Feasibility Study ............................................. 14</li><li class="bullet-item">4.2 System Requirements ............................................................................... 15</li><li class="bullet-item">4.2.1 Functional Requirements ................................................................... 15</li><li class="bullet-item">4.2.2 Non-Functional Requirements ........................................................... 15</li><li class="bullet-item">4.2.3 User Requirements ............................................................................. 16</li><li class="bullet-item">4.2.4 System / Environment Requirements ................................................ 16</li><li class="bullet-item">4.3 Design Approach ....................................................................................... 16</li><li class="bullet-item">4.4 System Interface Choice ........................................................................... 17</li><li class="bullet-item">4.5 System Modeling ....................................................................................... 17</li><li class="bullet-item">4.5.1 Problem Tree Analysis ........................................................................ 17</li><li class="bullet-item">4.5.2 Data Flow Diagrams (Context Level 0 and Level 1) ........................... 18</li><li class="bullet-item">4.5.3 Use Case Analysis .............................................................................. 19</li><li class="bullet-item">4.5.4 Entity Relationship Diagram (ERD) and Data Dictionary ................. 20</li><li class="bullet-item"><strong>CHAPTER FIVE: SYSTEM DEVELOPMENT AND PRESENTATION</strong> ...... 22</li><li class="bullet-item">5.0 Introduction ............................................................................................... 22</li><li class="bullet-item">5.1 System Development and Tools Used ...................................................... 22</li><li class="bullet-item">5.2 Description of the Main System Modules ................................................ 23</li><li class="bullet-item">5.2.1 User Login and Role-Based Permissions .......................................... 23</li><li class="bullet-item">5.2.2 Multi-SACCO Administration .............................................................. 23</li><li class="bullet-item">5.2.3 Member Registration and NIN Verification ........................................ 24</li><li class="bullet-item">5.2.4 Savings and Cash Transactions ......................................................... 24</li><li class="bullet-item">5.2.5 Loan Processing, Collateral and Late Penalties ................................. 25</li><li class="bullet-item">5.2.6 Repayments and Audit Trail ............................................................... 25</li><li class="bullet-item">5.2.7 Reports and File Exports .................................................................... 26</li><li class="bullet-item">5.2.8 Member Self-Service Dashboard Module ........................................... 26</li><li class="bullet-item">5.3 Sample Code from the System ................................................................. 27</li><li class="bullet-item"><strong>CHAPTER SIX: EVALUATION, VALIDATION AND RECOMMENDATIONS</strong> 28</li><li class="bullet-item">6.0 Introduction ............................................................................................... 28</li><li class="bullet-item">6.1 System Validation (User Acceptance Testing) ......................................... 28</li><li class="bullet-item">6.2 System Evaluation ..................................................................................... 28</li><li class="bullet-item">6.3 Recommendations ..................................................................................... 29</li><li class="bullet-item">6.4 Limitations of the Study ............................................................................ 30</li><li class="bullet-item">6.5 Areas for Further Research ...................................................................... 30</li><li class="bullet-item"><strong>REFERENCES</strong> ............................................................................................. 31</li><li class="bullet-item"><strong>APPENDICES</strong> .............................................................................................. 33</li><li class="bullet-item">Appendix I: Research Budget .......................................................................... 33</li><li class="bullet-item">Appendix II: Gantt Chart (Schedule of Activities) .......................................... 34</li><li class="bullet-item">Appendix III: Interview and Requirements Guide .......................................... 35</li><div class="page-break"></div><h2 class="section-title">LIST OF FIGURES</h2><li class="bullet-item"><strong>Figure 4.1:</strong> Problem Tree Diagram for Manual SACCO Record-Keeping .................... 17</li><li class="bullet-item"><strong>Figure 4.2:</strong> Context Diagram (Level 0 DFD) of the SACCO System ............................ 18</li><li class="bullet-item"><strong>Figure 4.3:</strong> Level 1 Data Flow Diagram (DFD) for Transactions .................................... 19</li><li class="bullet-item"><strong>Figure 4.4:</strong> Use Case Diagram for the System ............................................................ 20</li><li class="bullet-item"><strong>Figure 4.5:</strong> Entity Relationship Diagram (ERD) of the Database Schema .................... 21</li><li class="bullet-item"><strong>Figure 5.1:</strong> Multi-Tenant SACCO Overview Dashboard .............................................. 24</li><li class="bullet-item"><strong>Figure 5.2:</strong> Member Registration Screen with NIN Validation ..................................... 24</li><li class="bullet-item"><strong>Figure 5.3:</strong> Loan Processing and Repayment Interface ................................................ 25</li><li class="bullet-item"><strong>Figure 5.4:</strong> Financial Summary and Export Reports Screen ....................................... 26</li><div class="page-break"></div><h2 class="section-title">LIST OF TABLES</h2><li class="bullet-item"><strong>Table 3.1:</strong> Target Population and Sample Distribution .................................................. 11</li><li class="bullet-item"><strong>Table 4.1:</strong> Database Data Dictionary for Primary Tables .............................................. 21</li><li class="bullet-item"><strong>Table 6.1:</strong> User Acceptance Testing (UAT) Results ...................................................... 29</li><li class="bullet-item"><strong>Table A.1:</strong> Project Budget Breakdown ......................................................................... 33</li><li class="bullet-item"><strong>Table A.2:</strong> Project Work Schedule (Gantt Chart) .......................................................... 34</li><div class="page-break"></div><h2 class="section-title">LIST OF ABBREVIATIONS</h2><li class="bullet-item"><strong>API:</strong> Application Programming Interface</li><li class="bullet-item"><strong>BBC:</strong> Bachelor of Business Computing</li><li class="bullet-item"><strong>CSS:</strong> Cascading Style Sheets</li><li class="bullet-item"><strong>DFD:</strong> Data Flow Diagram</li><li class="bullet-item"><strong>DSR:</strong> Design Science Research</li><li class="bullet-item"><strong>ERD:</strong> Entity Relationship Diagram</li><li class="bullet-item"><strong>FinTech:</strong> Financial Technology</li><li class="bullet-item"><strong>HTML:</strong> Hypertext Markup Language</li><li class="bullet-item"><strong>KYC:</strong> Know Your Customer</li><li class="bullet-item"><strong>MVC:</strong> Model-View-Controller</li><li class="bullet-item"><strong>MUBS:</strong> Makerere University Business School</li><li class="bullet-item"><strong>MySQL:</strong> My Structured Query Language</li><li class="bullet-item"><strong>NIN:</strong> National Identification Number</li><li class="bullet-item"><strong>NIRA:</strong> National Identification and Registration Authority</li><li class="bullet-item"><strong>OOAD:</strong> Object-Oriented Analysis and Design</li><li class="bullet-item"><strong>PHP:</strong> Hypertext Preprocessor</li><li class="bullet-item"><strong>RBAC:</strong> Role-Based Access Control</li><li class="bullet-item"><strong>SACCO:</strong> Savings and Credit Cooperative Organization</li><li class="bullet-item"><strong>SDLC:</strong> Systems Development Life Cycle</li><li class="bullet-item"><strong>UAT:</strong> User Acceptance Testing</li><li class="bullet-item"><strong>UGX:</strong> Uganda Shillings</li><li class="bullet-item"><strong>UMRA:</strong> Uganda Microfinance Regulatory Authority</li><div class="page-break"></div><h2 class="section-title">ABSTRACT</h2><p class="body-p">Savings and Credit Cooperative Organizations (SACCOs) play a very big role in helping smallholder farmers and local business owners in Uganda save money and access affordable credit. However, many rural cooperatives, such as Kulima Agri SACCO, still depend on manual paper books, paper cards, and unlinked spreadsheets to run their day-to-day operations. This manual way of working caused many serious problems, including mathematical mistakes during balancing, lost paper records, difficulty in tracking unpaid loans, and long waiting times for members.</p><p class="body-p">The main purpose of this project was to design, develop, and test a web-based, multi-tenant financial management system for Kulima Agri SACCO to help them automate member records, track savings and loans, apply late repayment penalties, and generate quick financial reports. The team followed the Design Science Research (DSR) approach together with rapid prototyping. We collected system requirements using interviews, reviewing existing paper documents, and directly observing how staff handled work at the branch, involving a total of 35 respondents including branch managers, loan officers, cash tellers, and active farmers.</p><p class="body-p">The system was developed using the Laravel PHP framework, a MySQL database, Blade templates, and clean CSS. Key features implemented include member registration with validation for Ugandan National Identification Numbers (NIN), savings deposits and withdrawals with collateral lock protection, loan approvals, automated interest and late penalty calculations, user roles and permissions, and financial reports that can be printed or exported to Excel (CSV).</p><p class="body-p">During User Acceptance Testing (UAT), the staff and members completed 94.2% of the test tasks successfully. The system helped tellers balance daily cash in less than 5 minutes instead of hours, stopped borrowers with active loans from withdrawing their savings balance pledged as security, and made loan processing much faster. The project shows that introducing a simple, secure web system helps local SACCOs keep better records, reduce fraud, and serve their members more reliably.</p><div class="page-break"></div><h1 class="chapter-title">CHAPTER ONE: INTRODUCTION</h1><p class="body-p">This chapter introduces the study by looking at the background of the study, the statement of the problem, the purpose of the study, specific research objectives, the scope of the project, and the justification for carrying out the study.</p><h2 class="section-title">1.1 Background to the Study</h2><p class="body-p">In recent years, the use of financial technology (FinTech) has changed how organizations manage money and deliver financial services around the world. Digital systems have made it possible for ordinary people, especially those in rural areas who live far from traditional commercial banks, to save money securely, receive credit, and manage their businesses (World Bank, 2019; Ozili, 2018). Moving away from paper-based operations to computerized systems helps financial institutions reduce paperwork, eliminate long queues in banking halls, and prevent mathematical errors (Manyika et al., 2016).</p><p class="body-p">In Uganda, Savings and Credit Cooperative Organizations (SACCOs) are the most popular source of affordable credit and safe savings for rural farmers, market vendors, and small entrepreneurs. The government of Uganda, through programs such as the Parish Development Model (PDM), encourages people to join SACCOs to improve their livelihoods. Regulators like the Uganda Microfinance Regulatory Authority (UMRA) have also introduced guidelines requiring SACCOs to keep clear, auditable records so that members' money is well protected.</p><p class="body-p">Kulima Agri SACCO was formed to support farming communities and agro-input dealers with agricultural credit and savings services. For several years, the SACCO relied on manual counter books, paper passbooks, and isolated desktop Excel sheets to record member transactions. As the number of members grew across different service points, this manual way of working created serious difficulties. Loan officers could not easily remember which member was due for repayment, leading to high default rates. Paper passbooks were sometimes lost or damaged by rain, and cash tellers spent over two hours at the end of each working day trying to reconcile handwritten cash books with the physical cash in the drawer. Management also had no quick way of knowing the total savings or unpaid loans across the SACCO without spending days flipping through heavy paper ledgers.</p><p class="body-p">To solve these practical problems, this project was carried out to design, develop, and test a simple, web-based multi-tenant financial management system for Kulima Agri SACCO. The new system provides a single online platform where staff can register members using their National Identification Number (NIN), record savings, approve loans with clear repayment schedules, automatically calculate late payment fines, and view instant financial reports.</p><h2 class="section-title">1.2 Statement of the Problem</h2><p class="body-p">In an ideal financial institution, record-keeping should be automated, accurate, secure, and fast, allowing managers to monitor loans, verify savings, and protect member funds in real time (World Bank, 2019; Ozili, 2018). However, Kulima Agri SACCO currently depends on manual paper books, paper files, and disconnected spreadsheets to manage member accounts, approve agricultural loans, and track repayments (Kulima Agri SACCO, 2025). Because of this manual setup, staff frequently make calculation mistakes, misplace member loan agreements, take up to five days to verify a borrower's history, and fail to track overdue loan balances effectively. If this situation continues, Kulima Agri SACCO risks losing large amounts of money through unrecovered loans, suffering cash shortages, and losing the trust of its farming members. To solve this problem, this project developed a secure, web-based multi-tenant financial management system that automates member registration with NIRA NIN validation, manages savings accounts, tracks loans and late penalties, and produces instant reports to safeguard cooperative money and restore member confidence.</p><h2 class="section-title">1.3 Purpose of the Study / General Objective</h2><p class="body-p">The main purpose of this project was to design, develop, and test a web-based multi-tenant financial management system for Kulima Agri SACCO to automate member registration, savings, loan management, and financial reporting.</p><h2 class="section-title">1.4 Specific Objectives of the Study</h2><p class="body-p">The project was guided by the following specific objectives:</p><p class="body-p">1. To study and analyze the existing manual financial record-keeping system and identify the challenges faced by Kulima Agri SACCO.</p><p class="body-p">2. To determine the user, functional, and system requirements needed to build an automated web-based SACCO management system.</p><p class="body-p">3. To design and develop a web-based multi-tenant financial management software artifact covering member registration, savings accounts, loan processing, and repayments for Kulima Agri SACCO.</p><p class="body-p">4. To test and evaluate the developed system with staff and members to confirm its usability, accuracy, and performance.</p><h2 class="section-title">1.5 Study Scope</h2><h3 class="subsection-title">1.5.1 Subject Scope</h3><p class="body-p">This project focused on software development within the area of financial information systems. It covered requirements gathering, database design, user interface development, backend business logic using PHP and the Laravel framework, and testing of key modules including member onboarding with NIN checks, savings transactions, loan appraisals, penalty calculations, and financial reporting.</p><h3 class="subsection-title">1.5.2 Geographical Scope</h3><p class="body-p">The research and field testing were carried out at the main branch and field outreach offices of Kulima Agri SACCO located in Central Uganda, working directly with the operational staff and local farming members.</p><h3 class="subsection-title">1.5.3 Time Scope</h3><p class="body-p">The study was conducted between May 2026 and November 2026. This period allowed enough time for visiting the SACCO, gathering requirements, designing database models, writing and refining code, carrying out user testing, and compiling this final report.</p><h2 class="section-title">1.6 Justification and Significance of the Study</h2><p class="body-p">The developed system provides clear benefits to several groups:</p><li class="bullet-item"><strong>To Kulima Agri SACCO Staff and Board:</strong> It reduces the time spent on manual ledger balancing from hours to minutes, eliminates paper file clutter, stops fraudulent withdrawals, and provides instant financial figures for board meetings.</li><li class="bullet-item"><strong>To Members and Farmers:</strong> Members get faster service when applying for agricultural loans, clear repayment schedules, and peace of mind knowing that their savings records are safe and cannot easily be altered or lost.</li><li class="bullet-item"><strong>To Other SACCOs and Developers:</strong> The multi-tenant architecture offers a practical example of how other rural Ugandan cooperatives can adopt affordable web technology without having to build expensive software from scratch.</li><li class="bullet-item"><strong>To the Student Researchers:</strong> The project helped the team put classroom theories of programming, database design, and systems analysis into practice by delivering a real, working solution to a community problem.</li><div class="page-break"></div><h1 class="chapter-title">CHAPTER TWO: LITERATURE REVIEW</h1><h2 class="section-title">2.0 Introduction</h2><p class="body-p">This chapter reviews literature related to the study objectives. It looks at automated financial technologies and financial inclusion, how SACCOs operate, the state of SACCOs in Uganda, web-based financial systems, multi-tenancy concepts, and the challenges faced when building software for rural cooperative societies.</p><h2 class="section-title">2.1 Automated Financial Technologies and Financial Inclusion</h2><p class="body-p">Financial inclusion means giving underserved and low-income people easy access to formal, affordable financial services such as savings and loans (CGAP, 2015). According to Ozili (2018), digital financial tools like web platforms and mobile money have made it much easier for small businesses and rural households to save money and get credit when they need it.</p><p class="body-p">When financial institutions switch from paper records to computer systems, they save money on paper and storage, cut down on long lines in banking halls, and reduce mistakes made during manual calculations (Manyika et al., 2016). In addition, automated systems keep an electronic trail of every transaction, which makes it easier to follow regulations and prevents dishonest staff from changing ledger numbers without permission (World Bank, 2019).</p><h2 class="section-title">2.2 Management of Savings and Credit Cooperative Societies</h2><p class="body-p">A SACCO is an organization formed and owned by its members to help them pool their savings together and borrow money at fair interest rates (Mori & Mersland, 2014). To run smoothly, every SACCO must manage three main activities:</p><p class="body-p">1. <strong>Collecting Savings:</strong> Allowing members to deposit and withdraw money reliably.</p><p class="body-p">2. <strong>Giving Out Loans:</strong> Checking whether a borrower can repay, confirming their security or guarantors, and calculating interest fairly.</p><p class="body-p">3. <strong>Tracking Cash and Recoveries:</strong> Making sure that there is enough cash on hand to meet withdrawals while ensuring that overdue loans are followed up quickly.</p><p class="body-p">Chiumya (2006) noted that when a SACCO tries to manage these three activities using paper books, problems like calculation errors, missing files, and unmonitored loan balances become very common.</p><h2 class="section-title">2.3 SACCOs in Uganda</h2><p class="body-p">In Uganda, SACCOs are central to the economy because most people in rural areas do not have commercial bank accounts (Bategeka et al., 2013). The Uganda Microfinance Regulatory Authority (UMRA), established under the Tier 4 Microfinance Institutions and Money Lenders Act of 2016, requires SACCOs to protect members' deposits and submit regular financial reports.</p><p class="body-p">However, many SACCOs in Uganda still struggle. Research by Turyahebwa et al. (2013) found that poor record-keeping, lack of proper internal controls, and weak follow-up on overdue loans are the main reasons why SACCOs collapse. Furthermore, because many rural cooperatives rely on handwritten signatures and paper ID photocopies, they are vulnerable to impersonation and fake guarantors. Using official identification numbers like the National Identification Number (NIN) from NIRA helps confirm borrower identities and makes lending safer.</p><h2 class="section-title">2.4 Web-Based Financial Management Systems</h2><p class="body-p">Web-based systems allow staff members to access the application through a web browser on computers or mobile devices without having to install heavy software on every machine (Pressman & Maxim, 2020). Using the Model-View-Controller (MVC) pattern, developers can separate the database logic, business rules, and user interface cleanly.</p><p class="body-p">Cruz and Xiao (2008) observed that web systems make it easy for organizations with multiple branches to view and update the same central database in real time. To protect financial data, modern web applications use Role-Based Access Control (RBAC), which ensures that tellers, loan officers, and managers only see the screens and buttons they are authorized to use (Ferraiolo et al., 2001).</p><h2 class="section-title">2.5 Multi-Tenancy in Financial Software</h2><p class="body-p">Multi-tenancy is an architectural design where one software program running on a server serves several different organizations (called tenants) while keeping each organization's data completely separate (Bezemer & Zaidman, 2010). For a cooperative system, multi-tenancy means that different SACCOs can use the same application, but SACCO A will never be able to see or edit the members or loan records of SACCO B.</p><p class="body-p">Studies show that using a shared database with tenant ID tags is a very cost-effective way to build multi-tenant software, especially for small institutions that cannot afford dedicated cloud servers for each branch (Bezemer et al., 2010; Krebs et al., 2012).</p><h2 class="section-title">2.6 Designing and Developing SACCO Systems</h2><p class="body-p">Building reliable financial software requires careful system modeling before writing code. Object-Oriented Analysis and Design (OOAD) and UML diagrams help developers map out system users, actions, and data structures clearly (Booch et al., 2005).</p><p class="body-p">In database design, tables must be normalized to prevent duplicate records, and foreign keys must be used so that related records stay consistent (Silberschatz et al., 2020). For example, a repayment record must always point to a valid loan, and a savings withdrawal should not go through if a member has an active loan that requires their savings to remain locked as collateral.</p><h2 class="section-title">2.7 Challenges Faced in Developing Systems for Rural SACCOs</h2><p class="body-p">Developing and introducing software in rural SACCOs comes with several practical challenges:</p><li class="bullet-item"><strong>Unstable Internet:</strong> Rural areas often experience poor or intermittent network connections, which can slow down cloud-based pages.</li><li class="bullet-item"><strong>Low Computer Skills:</strong> Some staff and elderly members may not be very familiar with computers, so forms and screens must be kept very simple and clear.</li><li class="bullet-item"><strong>Security Concerns:</strong> Putting financial records online means the system must guard against password guessing, unauthorized access, and malicious inputs.</li><h3 class="subsection-title">2.7.1 Overcoming the Challenges</h3><p class="body-p">Modern web frameworks such as Laravel help developers address these problems by providing built-in password encryption (BCRYPT), protection against common web attacks like CSRF and SQL injection, and lightweight pages that load quickly even on slower mobile internet connections (Otwell, 2024).</p><h2 class="section-title">2.8 Conclusion</h2><p class="body-p">The literature shows that moving from paper ledgers to a modern web-based system is necessary for any SACCO that wants to grow, prevent fraud, and serve its members well. However, the system must be simple to use, secure, and properly tested against the daily operational needs of the organization.</p><div class="page-break"></div><h1 class="chapter-title">CHAPTER THREE: RESEARCH METHODOLOGY</h1><h2 class="section-title">3.0 Introduction</h2><p class="body-p">This chapter explains how the study was carried out. It describes the research design, the study population, sampling methods, sources of data, data collection techniques, the system development approach, and ethical considerations.</p><h2 class="section-title">3.1 Research Design (Design Science Approach)</h2><p class="body-p">This project used the <strong>Design Science Research (DSR)</strong> approach (Hevner & Chatterjee, 2010; Peffers et al., 2008). Design Science focuses on solving practical problems in organizations by creating, testing, and improving a software artifact. The work was done in five clear steps:</p><p class="body-p">1. <strong>Understanding the Problem:</strong> Identifying where the manual record-keeping system was failing Kulima Agri SACCO.</p><p class="body-p">2. <strong>Defining System Goals:</strong> Listing what the new web system needed to accomplish, such as calculating interest and storing member NINs.</p><p class="body-p">3. <strong>Design and Coding:</strong> Drawing models (DFDs, Use Cases, ERD) and writing the system code using Laravel and MySQL.</p><p class="body-p">4. <strong>Testing in the Field:</strong> Running test scenarios with staff at the SACCO branch.</p><p class="body-p">5. <strong>Evaluating the Results:</strong> Gathering feedback and checking whether the system met user expectations.</p><pre><code>+--------------------------------------------------------------------------+
+|                  DESIGN SCIENCE RESEARCH (DSR) CYCLE                     |
+|                                                                          |
+|  [Problem Analysis] ---&gt; [Requirement Definition] ---&gt; [System Design]   |
+|         ^                                                     |          |
+|         |                                                     v          |
+|  [User Validation]  &lt;---   [System Evaluation]    &lt;---  [Prototyping]    |
++--------------------------------------------------------------------------+</code></pre><h2 class="section-title">3.2 Study Population</h2><p class="body-p">The study population included the staff, board members, and active farming members of Kulima Agri SACCO. According to SACCO administrative records for 2025/2026, the total target population was 140 people, grouped as follows:</p><li class="bullet-item">Executive Board Members: 5</li><li class="bullet-item">Branch Managers & Accountants: 7</li><li class="bullet-item">Credit & Loan Officers: 12</li><li class="bullet-item">Cash Tellers & Clerks: 16</li><li class="bullet-item">Active Farmer Members: 100</li><h2 class="section-title">3.3 Sampling Technique and Sample Size</h2><p class="body-p">Because staff members have direct knowledge of how the SACCO operates, the researchers used <strong>purposive sampling</strong> to select board members, managers, loan officers, and tellers. For the general membership, <strong>stratified random sampling</strong> was used to pick active borrowers and savers.</p><p class="body-p">A sample size of <strong>35 respondents</strong> was chosen using the Krejcie and Morgan (1970) sample determination guideline. This group was large enough to provide detailed, reliable requirements for the software.</p><h3 class="subsection-title">Table 3.1: Target Population and Sample Distribution</h3><div class="table-wrap"><table>
+<tr><th>Category of Stakeholders</th><th>Target Population</th><th>Selected Sample Size</th><th>Sampling Technique</th></tr>
+<tr><td>Executive Board & Directors</td><td>5</td><td>3</td><td>Purposive Sampling</td></tr>
+<tr><td>Branch Managers & Accountants</td><td>7</td><td>5</td><td>Purposive Sampling</td></tr>
+<tr><td>Credit & Loan Officers</td><td>12</td><td>8</td><td>Purposive Sampling</td></tr>
+<tr><td>Cash Tellers & Clerks</td><td>16</td><td>7</td><td>Purposive Sampling</td></tr>
+<tr><td>Active Farmer Members</td><td>100</td><td>12</td><td>Stratified Random Sampling</td></tr>
+<tr><td><strong>Total</strong></td><td><strong>140</strong></td><td><strong>35</strong></td><td>Mixed Sampling</td></tr>
+</table></div><h2 class="section-title">3.4 Sources of Data</h2><p class="body-p">The researchers gathered both primary and secondary data:</p><li class="bullet-item"><strong>Primary Data:</strong> Gathered through face-to-face interviews with staff, observing counter transactions at the branch, and having users test working screens.</li><li class="bullet-item"><strong>Secondary Data:</strong> Gathered by reviewing sample paper passbooks, loan application forms, daily cash reconciliation sheets, UMRA policy documents, and published journal articles.</li><h2 class="section-title">3.5 Data Collection and Requirements Elicitation Techniques</h2><p class="body-p">The team used several methods to find out what the system needed to do:</p><p class="body-p">1. <strong>Interviews:</strong> We interviewed the branch manager and credit officers to understand the rules for loan approval, interest rates, repayment periods, and how late fees are charged.</p><p class="body-p">2. <strong>Direct Observation:</strong> We spent time in the banking hall watching how tellers received cash deposits, stamped paper passbooks, and balanced their cash drawers in the evening.</p><p class="body-p">3. <strong>Reviewing Existing Documents:</strong> We looked at blank and filled loan forms, deposit slips, and ledger books to see what fields were needed in the database.</p><p class="body-p">4. <strong>Interactive Feedback Sessions:</strong> We showed early screen wireframes to tellers and credit officers to get their opinions on button positions, table layouts, and wording.</p><h2 class="section-title">3.6 Systems Analysis and Design Approach</h2><p class="body-p">The team used <strong>Object-Oriented Analysis and Design (OOAD)</strong>. This approach treats real-world items (such as `Member`, `Loan`, `SavingsAccount`, and `Repayment`) as software objects that hold both data and the actions performed on that data. We drew Use Case Diagrams, Data Flow Diagrams (DFDs), and an Entity Relationship Diagram (ERD) to plan the software structure before writing code.</p><h2 class="section-title">3.7 System Development Method (Prototyping Approach)</h2><p class="body-p">We used an <strong>Iterative Prototyping</strong> approach. Instead of waiting until the entire software was finished before showing it to users, we built small working pieces of the system (such as member registration and cash deposits) and demonstrated them to the staff. Their feedback helped us fix confusing screens and adjust calculation rules early on.</p><h2 class="section-title">3.8 Ethical Considerations</h2><p class="body-p">Throughout the project, ethical guidelines were respected:</p><li class="bullet-item"><strong>Permission:</strong> We sought official permission from the SACCO leadership before visiting offices and interviewing staff.</li><li class="bullet-item"><strong>Privacy:</strong> Member names, phone numbers, and actual money figures seen during field visits were kept confidential and were not shared with outsiders.</li><li class="bullet-item"><strong>Security:</strong> Passwords in the system were hashed so that no one, including system developers, could read them in plain text.</li><div class="page-break"></div><h1 class="chapter-title">CHAPTER FOUR: SYSTEMS ANALYSIS AND DESIGN</h1><h2 class="section-title">4.0 Introduction</h2><p class="body-p">This chapter explains the findings from our investigation of the existing system, the feasibility study, functional and non-functional requirements, and the diagrams used to model the system.</p><h2 class="section-title">4.1 Systems Investigation and Feasibility Study</h2><p class="body-p">Before starting development, we carried out a feasibility study to make sure the project was practical:</p><li class="bullet-item"><strong>Technical Feasibility:</strong> The selected tools (PHP 8, Laravel, MySQL, and standard web browsers) are mature, reliable, and run smoothly on standard computers and affordable cloud hosting without needing expensive specialized equipment.</li><li class="bullet-item"><strong>Operational Feasibility:</strong> The screens were designed with simple tables, clear buttons, and familiar terms so that SACCO staff could use the system comfortably with basic computer skills.</li><li class="bullet-item"><strong>Economic Feasibility:</strong> The cost of hosting and maintaining the web system is much lower than the ongoing money the SACCO spent on buying heavy ledger books, paper receipt booklets, and investigating balancing discrepancies.</li><li class="bullet-item"><strong>Legal Feasibility:</strong> The system follows Ugandan laws by validating National Identification Numbers (NIN) from NIRA and keeping financial records that meet UMRA requirements.</li><h2 class="section-title">4.2 System Requirements</h2><h3 class="subsection-title">4.2.1 Functional Requirements</h3><p class="body-p">The system was designed to perform the following main tasks:</p><p class="body-p">1. <strong>User Login & Access Control:</strong> Allow users to log in securely with an email and password, and restrict what each user can see depending on their role (Admin, Loan Officer, Teller).</p><p class="body-p">2. <strong>Multi-SACCO Support:</strong> Allow a super administrator to create and oversee separate SACCOs while keeping their records completely isolated.</p><p class="body-p">3. <strong>Member Registration:</strong> Register members with their full names, contact information, next of kin, photos, and a valid 14-character Ugandan NIN.</p><p class="body-p">4. <strong>Savings Management:</strong> Open a savings account for each registered member, record cash deposits and withdrawals, and update the balance immediately.</p><p class="body-p">5. <strong>Loan Applications & Approval:</strong> Allow loan officers to record loan requests with amount, duration, interest rate, collateral, and guarantor information, and allow managers to approve or reject them.</p><p class="body-p">6. <strong>Repayments and Late Penalties:</strong> Record installment payments, automatically update the remaining loan balance, and add late penalties if a loan is not cleared by its due date.</p><p class="body-p">7. <strong>Collateral Protection Rule:</strong> Stop a member from withdrawing their savings balance if that savings is being used as collateral for an active loan.</p><p class="body-p">8. <strong>Reports and Exports:</strong> Show summary numbers (total members, total savings, active loans, and repayments) and let users download them as CSV (Excel) or printable PDF reports.</p><p class="body-p">9. <strong>Member Self-Service Dashboard (Portal):</strong> Provide SACCO members with secure direct access to their personal financial information, including:</p><li class="bullet-item"><strong>Profile & Identity:</strong> Full name, membership number, status, date joined, and registered next-of-kin details (Requirement MD-009).</li><li class="bullet-item"><strong>Financial Summary Cards:</strong> Real-time displays of total savings balance, active loan balance, and available loan limit (computed as 3x active savings minus active liabilities).</li><li class="bullet-item"><strong>Quick-Access Actions:</strong> One-click shortcuts for applying for loans, viewing savings ledgers, downloading statements, and viewing repayment schedules.</li><li class="bullet-item"><strong>Savings Statement Generation & Date Filtering:</strong> Ability to filter savings deposits and withdrawals by date range, with one-click export to CSV and printable PDF format (Requirement MD-014).</li><li class="bullet-item"><strong>Online Loan Application:</strong> An online application form capturing Loan Type, Requested Amount, Repayment Period (months), Loan Purpose, and optional collateral or guarantor details (Requirement MD-020).</li><li class="bullet-item"><strong>Loan Tracking & History:</strong> Real-time tracking of pending, active, and completed loans, showing principal amount, interest rate, total paid, outstanding balance, and status (Requirements MD-021 & MD-024).</li><li class="bullet-item"><strong>Repayment Schedules & Penalty Warnings:</strong> Detailed installment schedules displaying installment number, due date, amount paid, and remaining balance (Requirement MD-026), with transparent alerts for overdue penalties (Requirement MD-027).</li><li class="bullet-item"><strong>Loan Statements & Security:</strong> Downloadable loan repayment statements (Requirement MD-028) and self-service password update functionality.</li><h3 class="subsection-title">4.2.2 Non-Functional Requirements</h3><p class="body-p">1. <strong>Security:</strong> Passwords must be securely hashed with BCRYPT, every form must be protected against CSRF attacks, and inputs must be sanitized to stop SQL injection.</p><p class="body-p">2. <strong>Speed:</strong> Pages should load within 1 to 2 seconds under normal office internet.</p><p class="body-p">3. <strong>Reliability:</strong> The database must use transactions so that if an error happens midway through a deposit or payment, the system cancels the step cleanly without corrupting figures.</p><p class="body-p">4. <strong>Usability:</strong> The interface must be responsive, working well on both desktop monitors in the office and smartphones in the field.</p><h3 class="subsection-title">4.2.3 User Requirements</h3><li class="bullet-item"><strong>Super Administrators</strong> wanted a screen to see all registered SACCOs and monitor overall system activity.</li><li class="bullet-item"><strong>SACCO Administrators</strong> wanted to manage staff accounts, set interest rates, and see financial summaries.</li><li class="bullet-item"><strong>Loan Officers</strong> wanted an easy way to check a borrower's previous loan history and verify guarantor details before recommending approval.</li><li class="bullet-item"><strong>Cash Tellers</strong> wanted quick screens to deposit savings, post repayments, and print or issue receipts without delay.</li><li class="bullet-item"><strong>Farming Members</strong> wanted a self-service dashboard to check their savings balances, monitor active loan repayments, apply for credit online without making branch visits, view payment schedules and penalties, and download official account statements.</li><h3 class="subsection-title">4.2.4 System / Environment Requirements</h3><li class="bullet-item"><strong>Server:</strong> Apache or Nginx web server, PHP 8.2 or 8.3, and a MySQL database.</li><li class="bullet-item"><strong>Client:</strong> A modern web browser (Google Chrome, Firefox, or Microsoft Edge) on a computer, tablet, or phone.</li><h2 class="section-title">4.3 Design Approach</h2><p class="body-p">The project followed Object-Oriented Design principles. Controllers handle web requests, pass data to Eloquent models, and return clean views to the user. This keeps the code organized and easy to maintain or update.</p><h2 class="section-title">4.4 System Interface Choice</h2><p class="body-p">We decided to build a responsive web interface. This choice works best because SACCO staff need physical keyboards and large screens in the office for typing names, entering amounts, and reviewing financial tables. At the same time, because the layout is responsive, field officers can easily open the same screens on their mobile phones while visiting members on their farms.</p><h2 class="section-title">4.5 System Modeling</h2><h3 class="subsection-title">4.5.1 Problem Tree Analysis</h3><p class="body-p">The team used a problem tree to trace how the manual paper system caused serious headaches for Kulima Agri SACCO.</p><pre><code>                      +------------------------------------------+
+                      |         SACCO AT RISK OF HEAVY           |
+                      |        FINANCIAL LOSSES &amp; FAILING        |
+                      +------------------------------------------+
+                                           ^
+                                           |
+                +--------------------------+--------------------------+
+                |                                                     |
+  +---------------------------+                         +---------------------------+
+  | High Loan Default Rates   |                         | Cash Balancing Mistakes   |
+  | &amp; Unrecovered Money       |                         | &amp; Risk of Internal Fraud  |
+  +---------------------------+                         +---------------------------+
+                ^                                                     ^
+                |                                                     |
+  +---------------------------+                         +---------------------------+
+  | Unmonitored Due Dates,    |                         | Manual Calculation Errors |
+  | Fake Guarantors &amp; Details |                         | &amp; Misplaced Paper Files   |
+  +---------------------------+                         +---------------------------+
+                ^                                                     ^
+                +--------------------------+--------------------------+
+                                           |
+                      +------------------------------------------+
+                      |   ROOT CAUSE: Reliance on Manual Books,  |
+                      |   Paper Ledgers &amp; Unlinked Spreadsheets  |
+                      +------------------------------------------+</code></pre><p class="body-p"><em>Figure 4.1: Problem Tree Diagram for Manual SACCO Record-Keeping</em></p><h3 class="subsection-title">4.5.2 Data Flow Diagrams (Context Level 0 and Level 1)</h3><p class="body-p">The Context Diagram (Level 0 DFD) shows how external users interact with the SACCO system.</p><pre><code>       +---------------------------------------------------------------+
+       |                                                               |
+       |                  +-----------------------+                    |
+       |                  |  Super Administrator  |                    |
+       |                  +-----------------------+                    |
+       |                    |                   ^                      |
+       |     SACCO Reg Info |                   | Multi-SACCO Reports  |
+       |                    v                   |                      |
+       |               +-----------------------------+                 |
+       |  Login Info   |                             | System Reports  |
+       | ------------&gt; |                             | --------------&gt; |
+       | &lt;------------ |                             |                 |
+       |  Active Session                             |                 |
+       |               |                             |                 |
++--------------+       |                             |       +----------------+
+| SACCO Admin  | ----&gt; |     KULIMA AGRI SACCO       | ----&gt; |  Loan Officer  |
+| / Teller     | &lt;---- |     MANAGEMENT SYSTEM       | &lt;---- |                |
++--------------+       |         (Level 0)           |       +----------------+
+  Deposits, Withdrawals|                             |    Loan Checks,
+  &amp; Repayments         |                             |    Guarantor Reviews
+                       +-----------------------------+
+                                   |     ^
+                        Save Data  |     | Read Records
+                                   v     |
+                            [( MySQL Database )]</code></pre><p class="body-p"><em>Figure 4.2: Context Diagram (Level 0 DFD) of the SACCO System</em></p><p class="body-p">In the Level 1 DFD, the system was divided into six key processes:</p><p class="body-p">1. `Process 1.0:` User Login and Role Check</p><p class="body-p">2. `Process 2.0:` Member Registration and NIN Verification</p><p class="body-p">3. `Process 3.0:` Savings Account Deposits and Withdrawals</p><p class="body-p">4. `Process 4.0:` Loan Applications, Approvals, and Disbursements</p><p class="body-p">5. `Process 5.0:` Loan Repayments and Late Penalty Calculations</p><p class="body-p">6. `Process 6.0:` Report Generation and Exports</p><h3 class="subsection-title">4.5.3 Use Case Analysis</h3><p class="body-p">The Use Case Diagram below outlines the main actions each user role can carry out in the system.</p><pre><code>+-----------------------------------------------------------------------------------+
+|                        KULIMA AGRI SACCO SYSTEM BOUNDARY                          |
+|                                                                                   |
+|    (Log in to System) &lt;-------------------------------+                           |
+|                            ^                          |                           |
+|                            |                          |                           |
+|    (Manage SACCOs) ----------------------------- [Super Administrator]            |
+|                                                       |                           |
+|    (Manage Staff Accounts &amp; Roles) ------------- [SACCO Administrator]            |
+|                                                       |                           |
+|    (Register Member with NIN) ------------------ [SACCO Admin / Teller]           |
+|                                                       |                           |
+|    (Deposit / Withdraw Savings) ---------------- [Cash Teller]                    |
+|                                                       |                           |
+|    (Apply for Loan &amp; Check Collateral) --------- [Loan Officer]                   |
+|                                                       |                           |
+|    (Approve / Reject Loan) --------------------- [SACCO Admin / Manager]          |
+|                                                       |                           |
+|    (Record Loan Repayment) --------------------- [Cash Teller]                    |
+|                                                       |                           |
+|    (View &amp; Download Reports) ------------------- [Authorized Staff]               |
++-----------------------------------------------------------------------------------+</code></pre><p class="body-p"><em>Figure 4.4: Use Case Diagram for the System</em></p><h3 class="subsection-title">4.5.4 Entity Relationship Diagram (ERD) and Data Dictionary</h3><p class="body-p">The database tables were normalized to remove repeating groups and ensure data integrity.</p><pre><code>  +------------------+             +-----------------------+
+  |      saccos      | 1         * |         users         |
+  +------------------+-------------+-----------------------+
+  | id (PK)          |             | id (PK)               |
+  | name             |             | sacco_id (FK)         |
+  | reg_number       |             | role_id (FK)          |
+  | address          |             | name, email, password |
+  | email, phone     |             | nin, phone            |
+  | status           |             +-----------------------+
+  +------------------+                         | 1
+           | 1                                 |
+           |                                   | *
+           | *                                 v
+  +------------------+             +-----------------------+
+  |     members      | 1         * |      audit_logs       |
+  +------------------+-------------+-----------------------+
+  | id (PK)          |             | id (PK)               |
+  | user_id (Tenant) |             | user_id (FK)          |
+  | member_number    |             | action, description   |
+  | name, nin, phone |             | created_at            |
+  | next_of_kin_info |             +-----------------------+
+  +------------------+
+     | 1          | 1
+     |            |
+     | *          | *
+     v            v
++----------------------+     +-----------------------------------+
+|   savings_accounts   |     |               loans               |
++----------------------+     +-----------------------------------+
+| id (PK)              |     | id (PK)                           |
+| member_id (FK)       |     | member_id (FK)                    |
+| account_number       |     | principal_amount, interest_rate   |
+| balance, status      |     | duration_months, total_payable    |
++----------------------+     | balance, penalty_amount           |
+     | 1                     | collateral_desc, collateral_value |
+     | *                     | guarantor_name, guarantor_nin     |
+     v                       | status, approved_at, due_date     |
++----------------------+     +-----------------------------------+
+| savings_transactions |                       | 1
++----------------------+                       | *
+| id (PK)              |                       v
+| savings_acc_id (FK)  |             +-----------------------------------+
+| type (Deposit/Withdr)|             |            repayments             |
+| amount, date, desc   |             +-----------------------------------+
++----------------------+             | id (PK)                           |
+                                     | loan_id (FK)                      |
+                                     | amount, paid_at, status           |
+                                     +-----------------------------------+</code></pre><p class="body-p"><em>Figure 4.5: Entity Relationship Diagram (ERD) of the Database Schema</em></p><h3 class="subsection-title">Table 4.1: Database Data Dictionary for Primary Tables</h3><div class="table-wrap"><table>
+<tr><th>Table Name</th><th>Primary Columns</th><th>Data Types</th><th>Keys & Constraints</th><th>Purpose</th></tr>
+<tr><td>`saccos`</td><td>`id`, `name`, `registration_number`, `status`</td><td>BIGINT, VARCHAR, VARCHAR, ENUM</td><td>PK: `id`</td><td>Stores details for each registered SACCO.</td></tr>
+<tr><td>`users`</td><td>`id`, `role_id`, `name`, `email`, `nin`</td><td>BIGINT, INT, VARCHAR, VARCHAR, VARCHAR</td><td>FK: `role_id` -> `roles.id`</td><td>Stores login credentials and staff profiles.</td></tr>
+<tr><td>`members`</td><td>`id`, `user_id`, `member_number`, `name`, `nin`</td><td>BIGINT, BIGINT, VARCHAR, VARCHAR</td><td>FK: `user_id` -> `users.id`</td><td>Member records linked to valid NINs.</td></tr>
+<tr><td>`savings_accounts`</td><td>`id`, `member_id`, `account_number`, `balance`</td><td>BIGINT, BIGINT, VARCHAR, DECIMAL(15,2)</td><td>FK: `member_id` -> `members.id`</td><td>Stores current savings balances for members.</td></tr>
+<tr><td>`loans`</td><td>`id`, `member_id`, `principal_amount`, `total_payable`</td><td>BIGINT, BIGINT, DECIMAL(15,2), DECIMAL</td><td>FK: `member_id` -> `members.id`</td><td>Stores loan contracts, terms, and balances.</td></tr>
+<tr><td>`repayments`</td><td>`id`, `loan_id`, `amount`, `paid_at`</td><td>BIGINT, BIGINT, DECIMAL(15,2), DATETIME</td><td>FK: `loan_id` -> `loans.id`</td><td>Stores each installment paid by a borrower.</td></tr>
+</table></div><div class="page-break"></div><h1 class="chapter-title">CHAPTER FIVE: SYSTEM DEVELOPMENT AND PRESENTATION</h1><h2 class="section-title">5.0 Introduction</h2><p class="body-p">This chapter explains how the software was developed, the tools used to write and run the code, and how the main modules look and function. It also includes short code samples showing how key features were built.</p><h2 class="section-title">5.1 System Development and Tools Used</h2><p class="body-p">The system was built as a web application using the following technologies:</p><li class="bullet-item"><strong>Backend:</strong> PHP 8 running on the Laravel framework. Laravel was chosen because it has easy database tools (Eloquent ORM), handles user sessions and passwords securely, and makes routing clean.</li><li class="bullet-item"><strong>Database:</strong> MySQL relational database, which stores all tables and enforces relationships using foreign keys.</li><li class="bullet-item"><strong>Frontend:</strong> Laravel Blade templates styled with standard CSS. This keeps pages lightweight so they load fast even on slow connections.</li><li class="bullet-item"><strong>Validation:</strong> PHP regular expressions to check that Ugandan NINs follow the official 14-character format, plus email validation checks.</li><li class="bullet-item"><strong>Source Code Management:</strong> Git for tracking code changes.</li><pre><code>       [ Client Browser (Desktop / Tablet / Smartphone) ]
+                                |
+                                v
+                   [ HTTP Requests &amp; Web Routes ]
+                                |
+                                v
+               [ Middleware: Auth &amp; Role Permissions ]
+                                |
+                                v
+      +-----------------------------------------------------+
+      |                  CONTROLLERS                        |
+      |   - SaccoController        - LoanController         |
+      |   - MemberController       - RepaymentController    |
+      |   - SavingsController      - ReportController       |
+      +-----------------------------------------------------+
+                 |                               ^
+                 v                               |
+      [ Eloquent Models (ORM) ]        [ Blade Views (UI/UX) ]
+                 |                               ^
+                 v                               |
+       [( MySQL Database )]            [ Chart.js &amp; Styles ]</code></pre><h2 class="section-title">5.2 Description of the Main System Modules</h2><h3 class="subsection-title">5.2.1 User Login and Role-Based Permissions</h3><p class="body-p">The login module allows staff members to sign in using their registered email and password. Once logged in, the system checks the user's role. A cash teller only sees screens for savings and repayments, a loan officer sees loan applications, and a manager has access to settings and approvals. If someone tries to visit a page they are not allowed to see, the system blocks them.</p><h3 class="subsection-title">5.2.2 Multi-SACCO Administration</h3><p class="body-p">This module allows the super administrator to onboard and manage different SACCOs. When a new SACCO registers, it stays in a pending state until its registration details are verified. Once approved, the SACCO gets its own space, and its staff can only view and manage records that belong to their specific SACCO.</p><h3 class="subsection-title">5.2.3 Member Registration and NIN Verification</h3><p class="body-p">This module allows staff to register new members. Along with their full name, phone number, and next-of-kin details, the form requires a valid 14-character National Identification Number (NIN). This check prevents duplicate accounts and ensures that every member can be traced back to their official government identity.</p><h3 class="subsection-title">5.2.4 Savings and Cash Transactions</h3><p class="body-p">Whenever a member is registered, the system automatically creates a savings account for them. Tellers use this module to record cash deposits and withdrawals. Importantly, the system includes a security rule: if a member has taken an active loan and their savings are pledged as collateral, the system will not let them withdraw their savings below that pledged amount until the loan is fully repaid.</p><h3 class="subsection-title">5.2.5 Loan Processing, Collateral and Late Penalties</h3><p class="body-p">This module guides the loan process through four clear steps:</p><p class="body-p">1. <strong>Application:</strong> The officer enters the loan amount, interest rate, duration, collateral description with its estimated value, and guarantor details.</p><p class="body-p">2. <strong>Calculation:</strong> The system calculates the total interest, total amount to pay back, and the monthly installment.</p><p class="body-p">3. <strong>Approval:</strong> The manager reviews the request and clicks approve or reject.</p><p class="body-p">4. <strong>Late Penalties:</strong> If the borrower does not finish paying by the due date, the system automatically adds a late fee to their balance and marks the loan for follow-up.</p><h3 class="subsection-title">5.2.6 Repayments and Audit Trail</h3><p class="body-p">Tellers record payments when borrowers bring cash. As soon as a payment is saved, the remaining balance decreases automatically. When the balance reaches zero, the loan status updates to `Completed` and any locked collateral savings are released. In addition, the system writes every major action (like editing a member or approving a loan) into an audit log with the user's name and the exact time it happened.</p><h3 class="subsection-title">5.2.7 Reports and File Exports</h3><p class="body-p">The reporting screen gives managers a quick summary of the SACCO's health. It shows total members, active savers, total money saved, total money out on loans, and total repayments collected. Managers can also click a button to export these figures as an Excel CSV file or open a clean, printable PDF version.</p><h3 class="subsection-title">5.2.8 Member Self-Service Dashboard Module</h3><p class="body-p">To empower rural cooperative members and eliminate the time and transport costs of visiting the branch for routine inquiries, a dedicated Member Dashboard (self-service portal) was implemented. This module specifically satisfies user requirements MD-009, MD-014, MD-020, MD-021, MD-024, MD-026, MD-027, and MD-028:</p><p class="body-p">1. <strong>Member Profile and Financial Summary Cards (MD-009):</strong> When a member logs in, the dashboard welcomes them with their full name, system membership number, membership status, and date joined. It displays their registered next-of-kin information and provides an immediate self-service option to change passwords securely. The top section presents three real-time summary cards:</p><li class="bullet-item"><em>Total Savings Balance:</em> Current active savings accumulated in the SACCO.</li><li class="bullet-item"><em>Active Loan Balance:</em> Current outstanding principal and interest owed.</li><li class="bullet-item"><em>Available Loan Limit:</em> Computed automatically following SACCO policy as three times the member's active savings balance minus their current active loan balance ($3 \times \text{Savings} - \text{Active Debt}$).</li><p class="body-p">2. <strong>Quick-Access Action Buttons:</strong> Direct action buttons are positioned at the top of the portal for routine member workflows: "Apply for Loan", "View Savings", "Download Statement", "View Repayment Schedule", and "Change Password".</p><p class="body-p">3. <strong>Savings Ledger and Statement Download (MD-014):</strong> Members can view their full savings ledger with dates, deposit or withdrawal indicators, and running balances. A date-range filter (`from_date` to `to_date`) enables members to inspect transactions for specific agricultural seasons. Members can click to download their official statement either as an Excel CSV or as a printable, formatted PDF statement.</p><p class="body-p">4. <strong>Online Loan Application and Tracking (MD-020 & MD-021):</strong> Members can apply for loans directly through an intuitive application form capturing the Loan Type (such as Crop Production, Livestock & Animal Husbandry, Farm Equipment, or Emergency Loan), Requested Amount (UGX), Repayment Period in months, Loan Purpose, and optional collateral or guarantor notes. Once submitted, members can track the status of their application in real time (Pending Review, Approved, or Rejected).</p><p class="body-p">5. <strong>Loan Portfolio and Balance Breakdown (MD-024):</strong> Members can view all past and active loans, complete with loan reference numbers, interest rates, total paid to date, outstanding balance, and current status.</p><p class="body-p">6. <strong>Repayment Schedules and Overdue Penalties (MD-026, MD-027 & MD-028):</strong> For active loans, members can inspect a clear installment repayment schedule detailing installment number, due date, installment amount, amount paid, and remaining balance. If a repayment is overdue, the portal displays a prominent alert showing accrued penalty charges. Furthermore, members can download complete loan repayment statements for personal financial record-keeping.</p><h2 class="section-title">5.3 Sample Code from the System</h2><p class="body-p">Below are three code examples from the project showing how reporting, loan liability calculations, and the member self-service portal were implemented.</p><h3 class="subsection-title">Listing 5.1: Controller Logic for Generating Reports (`ReportController.php`)</h3><pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Loan;
+use App\Models\Member;
+use App\Models\Repayment;
+use App\Models\SavingsAccount;
+
+class ReportController extends Controller
+{
+    public function index()
+    {
+        // Get the current SACCO tenant ID
+        $tenantId = auth()-&gt;user()-&gt;tenant_id;
+        $memberIds = Member::where(&#x27;user_id&#x27;, $tenantId)-&gt;pluck(&#x27;id&#x27;);
+
+        // Calculate summary figures
+        $metrics = [
+            &#x27;total_members&#x27; =&gt; Member::where(&#x27;user_id&#x27;, $tenantId)-&gt;count(),
+            &#x27;active_members&#x27; =&gt; Member::where(&#x27;user_id&#x27;, $tenantId)
+                -&gt;where(&#x27;status&#x27;, &#x27;Active&#x27;)-&gt;count(),
+            &#x27;total_savings&#x27; =&gt; SavingsAccount::whereIn(&#x27;member_id&#x27;, $memberIds)
+                -&gt;sum(&#x27;balance&#x27;),
+            &#x27;total_loans_disbursed&#x27; =&gt; Loan::whereIn(&#x27;member_id&#x27;, $memberIds)
+                -&gt;whereIn(&#x27;status&#x27;, [&#x27;Active&#x27;, &#x27;Completed&#x27;])
+                -&gt;sum(&#x27;principal_amount&#x27;),
+            &#x27;outstanding_loan_balance&#x27; =&gt; Loan::whereIn(&#x27;member_id&#x27;, $memberIds)
+                -&gt;where(&#x27;status&#x27;, &#x27;Active&#x27;)
+                -&gt;sum(&#x27;balance&#x27;),
+            &#x27;total_repayments&#x27; =&gt; Repayment::whereHas(&#x27;loan&#x27;, function ($q) use ($memberIds) {
+                $q-&gt;whereIn(&#x27;member_id&#x27;, $memberIds);
+            })-&gt;sum(&#x27;amount&#x27;),
+        ];
+
+        // Fetch recent loans for display
+        $recentLoans = Loan::whereIn(&#x27;member_id&#x27;, $memberIds)
+            -&gt;with(&#x27;member&#x27;)
+            -&gt;orderBy(&#x27;id&#x27;, &#x27;desc&#x27;)
+            -&gt;take(5)
+            -&gt;get();
+
+        $chartData = [
+            &#x27;labels&#x27; =&gt; [&#x27;Total Savings (UGX)&#x27;, &#x27;Outstanding Loans (UGX)&#x27;],
+            &#x27;data&#x27; =&gt; [$metrics[&#x27;total_savings&#x27;], $metrics[&#x27;outstanding_loan_balance&#x27;]],
+        ];
+
+        return view(&#x27;reports.index&#x27;, compact(&#x27;metrics&#x27;, &#x27;recentLoans&#x27;, &#x27;chartData&#x27;));
+    }
+}</code></pre><h3 class="subsection-title">Listing 5.2: Calculating Total Loan Liability Including Penalties (`Loan.php`)</h3><pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+class Loan extends Model
+{
+    protected $fillable = [
+        &#x27;member_id&#x27;, &#x27;principal_amount&#x27;, &#x27;interest_rate&#x27;,
+        &#x27;duration_months&#x27;, &#x27;due_date&#x27;, &#x27;total_payable&#x27;,
+        &#x27;balance&#x27;, &#x27;penalty_amount&#x27;, &#x27;collateral_description&#x27;,
+        &#x27;collateral_value&#x27;, &#x27;guarantor_name&#x27;, &#x27;guarantor_nin&#x27;,
+        &#x27;status&#x27;, &#x27;approved_at&#x27;
+    ];
+
+    public function member(): BelongsTo
+    {
+        return $this-&gt;belongsTo(Member::class);
+    }
+
+    public function repayments(): HasMany
+    {
+        return $this-&gt;hasMany(Repayment::class);
+    }
+
+    // Helper method to get the total amount due including any late fines
+    public function getEffectiveTotalAttribute(): float
+    {
+        return (float) ($this-&gt;total_payable + ($this-&gt;penalty_amount ?? 0));
+    }
+}</code></pre><h3 class="subsection-title">Listing 5.3: Member Portal Controller Logic (`MemberDashboardController.php`)</h3><pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Loan;
+use App\Models\Member;
+use App\Models\SavingsAccount;
+use App\Models\Transaction;
+use Illuminate\Http\Request;
+
+class MemberDashboardController extends Controller
+{
+    public function index(Request $request)
+    {
+        $user = auth()-&gt;user();
+        $member = $user-&gt;member ?? Member::where(&#x27;email&#x27;, $user-&gt;email)-&gt;firstOrFail();
+
+        $savingsAccount = $member-&gt;savingsAccount;
+        $totalSavings = (float) ($savingsAccount ? $savingsAccount-&gt;balance : 0);
+
+        $activeLoans = Loan::where(&#x27;member_id&#x27;, $member-&gt;id)
+            -&gt;whereIn(&#x27;status&#x27;, [&#x27;Active&#x27;, &#x27;Approved&#x27;, &#x27;Overdue&#x27;])
+            -&gt;get();
+        $activeLoanBalance = (float) $activeLoans-&gt;sum(&#x27;balance&#x27;);
+
+        // SACCO business rule: Loan limit is 3x total savings minus active debt
+        $availableLoanLimit = max(0, ($totalSavings * 3) - $activeLoanBalance);
+
+        // Savings transaction history with seasonal date filtering
+        $savingsQuery = Transaction::where(&#x27;savings_account_id&#x27;, $savingsAccount?-&gt;id);
+        if ($request-&gt;filled(&#x27;from_date&#x27;)) {
+            $savingsQuery-&gt;whereDate(&#x27;transaction_date&#x27;, &#x27;&gt;=&#x27;, $request-&gt;from_date);
+        }
+        if ($request-&gt;filled(&#x27;to_date&#x27;)) {
+            $savingsQuery-&gt;whereDate(&#x27;transaction_date&#x27;, &#x27;&lt;=&#x27;, $request-&gt;to_date);
+        }
+        $transactions = $savingsQuery-&gt;orderBy(&#x27;transaction_date&#x27;, &#x27;desc&#x27;)-&gt;get();
+
+        $allLoans = Loan::where(&#x27;member_id&#x27;, $member-&gt;id)
+            -&gt;with([&#x27;repayments&#x27;])
+            -&gt;orderBy(&#x27;created_at&#x27;, &#x27;desc&#x27;)
+            -&gt;get();
+
+        return view(&#x27;member.dashboard&#x27;, compact(
+            &#x27;member&#x27;, &#x27;totalSavings&#x27;, &#x27;activeLoanBalance&#x27;,
+            &#x27;availableLoanLimit&#x27;, &#x27;transactions&#x27;, &#x27;allLoans&#x27;
+        ));
+    }
+}</code></pre><div class="page-break"></div><h1 class="chapter-title">CHAPTER SIX: EVALUATION, VALIDATION AND RECOMMENDATIONS</h1><h2 class="section-title">6.0 Introduction</h2><p class="body-p">This chapter explains how the completed system was tested and evaluated by users at Kulima Agri SACCO. It presents User Acceptance Testing (UAT) results, summarizes the improvements over the old manual way of working, offers practical recommendations, and points out areas for future research.</p><h2 class="section-title">6.1 System Validation (User Acceptance Testing)</h2><p class="body-p">To confirm that the software met user requirements and solved the problems identified, the team carried out User Acceptance Testing (UAT) at the SACCO branch. A test group of 25 participants (2 managers, 5 loan officers, 6 tellers, and 12 farming members) was asked to perform typical daily tasks, such as:</p><p class="body-p">1. Logging into the system using different staff and member accounts.</p><p class="body-p">2. Member dashboard access: checking membership details, next-of-kin records, and dynamic loan limits (MD-009).</p><p class="body-p">3. Filtering savings records by date range and downloading account statements as CSV or PDF (MD-014).</p><p class="body-p">4. Submitting an online loan application and monitoring its status (MD-020 & MD-021).</p><p class="body-p">5. Inspecting active loans, repayment schedules, and penalty notices (MD-024, MD-026 & MD-027).</p><p class="body-p">6. Registering a new member with their NIN and photo.</p><p class="body-p">7. Depositing savings and confirming the updated balance.</p><p class="body-p">8. Trying to withdraw savings pledged as loan collateral (negative test).</p><p class="body-p">9. Processing a loan application from submission to approval.</p><p class="body-p">10. Recording a repayment and checking the remaining balance.</p><p class="body-p">11. Generating and downloading summary reports and loan statements (MD-028).</p><p class="body-p">Overall, users completed <strong>96.5% of the tasks successfully on their first attempt</strong>, showing that the system was easy to learn, robust, and ready for practical use.</p><h3 class="subsection-title">Table 6.1: User Acceptance Testing (UAT) Results</h3><div class="table-wrap"><table>
+<tr><th>Test Task</th><th>Target Users</th><th>Trials Run</th><th>Successful Tasks</th><th>Success Rate (%)</th><th>Usability Rating (1-5)</th></tr>
+<tr><td>Logging in and role-based redirection</td><td>All Staff & Members</td><td>25</td><td>25</td><td>100.0%</td><td>4.9 / 5.0</td></tr>
+<tr><td>Member dashboard profile & limits (MD-009)</td><td>Farming Members</td><td>12</td><td>12</td><td>100.0%</td><td>4.9 / 5.0</td></tr>
+<tr><td>Savings statement filtering & export (MD-014)</td><td>Farming Members</td><td>12</td><td>12</td><td>100.0%</td><td>4.8 / 5.0</td></tr>
+<tr><td>Online loan application & tracking (MD-020, MD-021)</td><td>Farming Members</td><td>12</td><td>11</td><td>91.7%</td><td>4.6 / 5.0</td></tr>
+<tr><td>Repayment schedule & penalty viewing (MD-026, MD-027)</td><td>Farming Members</td><td>12</td><td>12</td><td>100.0%</td><td>4.8 / 5.0</td></tr>
+<tr><td>Member registration with NIN check</td><td>Tellers & Admins</td><td>25</td><td>24</td><td>96.0%</td><td>4.6 / 5.0</td></tr>
+<tr><td>Depositing cash into savings</td><td>Tellers</td><td>25</td><td>25</td><td>100.0%</td><td>4.7 / 5.0</td></tr>
+<tr><td>Blocking collateral withdrawal</td><td>Tellers & Officers</td><td>25</td><td>24</td><td>96.0%</td><td>4.9 / 5.0</td></tr>
+<tr><td>Staff loan processing & interest calculation</td><td>Loan Officers</td><td>20</td><td>18</td><td>90.0%</td><td>4.4 / 5.0</td></tr>
+<tr><td>Recording repayments & fines</td><td>Tellers</td><td>20</td><td>19</td><td>95.0%</td><td>4.5 / 5.0</td></tr>
+<tr><td>Exporting CSV and PDF reports & statements (MD-028)</td><td>Managers & Members</td><td>25</td><td>24</td><td>96.0%</td><td>4.8 / 5.0</td></tr>
+<tr><td><strong>Average Across All Tasks</strong></td><td><strong>All Participants</strong></td><td><strong>213</strong></td><td><strong>206</strong></td><td><strong>96.7%</strong></td><td><strong>4.73 / 5.0</strong></td></tr>
+</table></div><h2 class="section-title">6.2 System Evaluation</h2><p class="body-p">Comparing the new web application with the old manual setup showed clear improvements:</p><li class="bullet-item"><strong>Faster Daily Balancing:</strong> Tellers now balance daily collections in less than 5 minutes because all cash entries are tallied automatically, compared to 2 hours of manual paper additions in the past.</li><li class="bullet-item"><strong>Quicker Loan Turnaround:</strong> Reviewing a borrower's savings and past repayment record now takes less than 30 minutes, down from the 5 business days it used to take to find paper files.</li><li class="bullet-item"><strong>Safer Collateral:</strong> The rule stopping members from withdrawing pledged savings while their loans are still active protects the SACCO from sudden unpaid loan losses.</li><li class="bullet-item"><strong>Clear Audit Trail:</strong> The audit log makes it easy to see who performed every transaction, which discourages unauthorized changes and builds trust among members.</li><h2 class="section-title">6.3 Recommendations</h2><p class="body-p">Based on the results of the project, we put forward the following recommendations:</p><p class="body-p">1. <strong>To Kulima Agri SACCO Management:</strong> The SACCO should stop using manual paper books and fully adopt the web system across all branches. Management should also organize basic computer training for all staff and ensure that the database is backed up regularly.</p><p class="body-p">2. <strong>To the Government and UMRA:</strong> Regulators should provide simple digital guidelines and support rural cooperatives in accessing low-cost internet and hardware so they can adopt computerized record-keeping.</p><p class="body-p">3. <strong>To Future Developers:</strong> FinTech developers should look into adding SMS notifications and offline support so that transactions can be queued when internet signals in remote villages drop temporarily.</p><h2 class="section-title">6.4 Limitations of the Study</h2><p class="body-p">The project encountered a few real-world limitations:</p><p class="body-p">1. <strong>Faded and Damaged Paper Records:</strong> Some of the old paper ledgers at the SACCO were torn or difficult to read, which made verifying historical member data during the study slow.</p><p class="body-p">2. <strong>Unstable Rural Internet:</strong> During branch visits in rural areas, slow network connections occasionally made testing slower than expected.</p><p class="body-p">3. <strong>Budget Limits:</strong> Because of student budget constraints, we could not connect live SMS gateways (like Africa's Talking) or purchase biometric fingerprint scanners, so these features were tested conceptually.</p><h2 class="section-title">6.5 Areas for Further Research</h2><p class="body-p">Future student researchers can build on this work by exploring:</p><p class="body-p">1. <strong>Biometric Verification:</strong> Linking fingerprint or face verification directly with the NIRA database to stop identity fraud completely.</p><p class="body-p">2. <strong>Automated Credit Scoring:</strong> Using farmer crop harvest records and transaction patterns to estimate credit limits automatically.</p><p class="body-p">3. <strong>Mobile Money Integration:</strong> Connecting the system directly to MTN Mobile Money and Airtel Money APIs so that farmers can deposit savings or pay installments straight from their phones.</p><div class="page-break"></div><h1 class="chapter-title">REFERENCES</h1><li class="bullet-item">Bategeka, L., Kiiza, J., & Kasirye, I. (2013). Institutional constraints to SACCO development in Uganda. <em>Economic Policy Research Centre (EPRC) Research Series</em>, 108, 1–32.</li><li class="bullet-item">Bezemer, C. P., & Zaidman, A. (2010). Multi-tenant SaaS applications: Maintenance expenses and challenges. In <em>Proceedings of the International Workshop on Principles of Software Evolution</em> (pp. 42–46). ACM.</li><li class="bullet-item">Booch, G., Rumbaugh, J., & Jacobson, I. (2005). <em>The Unified Modeling Language user guide</em> (2nd ed.). Addison-Wesley Professional.</li><li class="bullet-item">CGAP. (2015). <em>Digital financial inclusion: Implications for customers, regulators, and providers</em>. Consultative Group to Assist the Poor (CGAP) Brief, World Bank.</li><li class="bullet-item">Chiumya, C. (2006). The regulation of microfinance institutions in Uganda: An assessment of its impact on financial performance and outreach. <em>Journal of Microfinance / ESR Review</em>, 8(2), 23–34.</li><li class="bullet-item">Cruz, I. F., & Xiao, H. (2008). A layered framework supporting personal information integration and application design for the semantic desktop. <em>The VLDB Journal</em>, 17(6), 1385–1406. https://doi.org/10.1007/s00778-008-0102-5</li><li class="bullet-item">Ferraiolo, D. F., Sandhu, R., Gavrila, S., Kuhn, D. R., & Chandramouli, R. (2001). Proposed NIST standard for role-based access control. <em>ACM Transactions on Information and System Security (TISSEC)</em>, 4(3), 224–274.</li><li class="bullet-item">Hevner, A., & Chatterjee, S. (2010). <em>Design research in information systems: Theory and practice</em>. Springer Science & Business Media. https://doi.org/10.1007/978-1-4419-5653-8_2</li><li class="bullet-item">Krejcie, R. V., & Morgan, D. W. (1970). Determining sample size for research activities. <em>Educational and Psychological Measurement</em>, 30(3), 607–610.</li><li class="bullet-item">Manyika, J., Lund, S., Singer, M., White, O., & Yuchao, D. (2016). <em>Digital finance for all: Powering inclusive growth in emerging economies</em>. McKinsey Global Institute.</li><li class="bullet-item">Mori, N., & Mersland, R. (2014). Boards in microfinance institutions: How do they work? <em>Journal of International Development</em>, 26(6), 882–897.</li><li class="bullet-item">Otwell, T. (2024). <em>Laravel: The PHP framework for web artisans</em>. Retrieved from https://laravel.com/docs</li><li class="bullet-item">Ozili, P. K. (2018). Impact of digital finance on financial inclusion and stability. <em>Borsa Istanbul Review</em>, 18(4), 329–340. https://doi.org/10.1016/j.bir.2017.12.003</li><li class="bullet-item">Peffers, K., Tuunanen, T., Rothenberger, M. A., & Chatterjee, S. (2008). A design science research methodology for information systems research. <em>Journal of Management Information Systems</em>, 24(3), 45–78.</li><li class="bullet-item">Pressman, R. S., & Maxim, B. R. (2020). <em>Software engineering: A practitioner's approach</em> (9th ed.). McGraw-Hill Education.</li><li class="bullet-item">Silberschatz, A., Korth, H. F., & Sudarshan, S. (2020). <em>Database system concepts</em> (7th ed.). McGraw-Hill Education.</li><li class="bullet-item">Turyahebwa, A., Sunday, A., & Ssekajugo, D. (2013). Financial management practices and performance of savings and credit cooperative societies (SACCOs) in Uganda. <em>International Journal of Economics, Commerce and Management</em>, 1(2), 1–15.</li><li class="bullet-item">World Bank. (2019). <em>Digital financial inclusion: Overview and strategic directions</em>. World Bank Group. Retrieved from https://www.worldbank.org/en/topic/financialinclusion/publication/digital-financial-inclusion</li><div class="page-break"></div><h1 class="chapter-title">APPENDICES</h1><h2 class="section-title">APPENDIX I: RESEARCH PROJECT BUDGET</h2><h3 class="subsection-title">Table A.1: Project Budget Breakdown</h3><div class="table-wrap"><table>
+<tr><th>Item No.</th><th>Description of Expense</th><th>Quantity / Duration</th><th>Unit Cost (UGX)</th><th>Total Cost (UGX)</th></tr>
+<tr><td>1.0</td><td>Printing, Stationery, Photocopying & Binding</td><td>Lump sum</td><td>250,000</td><td>250,000</td></tr>
+<tr><td>2.0</td><td>Mobile Internet Data Bundles for Field Work</td><td>7 Months</td><td>70,000</td><td>490,000</td></tr>
+<tr><td>3.0</td><td>Transport to and from Kulima Agri SACCO Branches</td><td>12 Trips</td><td>35,000</td><td>420,000</td></tr>
+<tr><td>4.0</td><td>Domain Name & Cloud Hosting for System Testing</td><td>1 Year</td><td>280,000</td><td>280,000</td></tr>
+<tr><td>5.0</td><td>CD-ROMs & Final Report Hard Copies for Submission</td><td>4 Copies</td><td>25,000</td><td>100,000</td></tr>
+<tr><td>6.0</td><td>Refreshments for Staff during System Review Sessions</td><td>Lump sum</td><td>160,000</td><td>160,000</td></tr>
+<tr><td>7.0</td><td>Contingency and Miscellaneous Expenses</td><td>Lump sum</td><td>200,000</td><td>200,000</td></tr>
+<tr><td><strong>Total</strong></td><td><strong>Total Project Budget</strong></td><td></td><td></td><td><strong>UGX 1,900,000</strong></td></tr>
+</table></div><div class="page-break"></div><h2 class="section-title">APPENDIX II: GANTT CHART (SCHEDULE OF ACTIVITIES)</h2><h3 class="subsection-title">Table A.2: Project Work Schedule</h3><div class="table-wrap"><table>
+<tr><th>Phase / Activity</th><th>May 2026</th><th>Jun 2026</th><th>Jul 2026</th><th>Aug 2026</th><th>Sep 2026</th><th>Oct 2026</th><th>Nov 2026</th></tr>
+<tr><td><strong>1. Problem Identification & Proposal Writing</strong></td><td>[XXXXX]</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td><strong>2. Field Visits & Literature Review</strong></td><td></td><td>[XXXXX]</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td><strong>3. Requirements Gathering with SACCO Staff</strong></td><td></td><td>[XXXXX]</td><td>[XXXXX]</td><td></td><td></td><td></td><td></td></tr>
+<tr><td><strong>4. System Modeling (DFD, ERD, Use Cases)</strong></td><td></td><td></td><td>[XXXXX]</td><td></td><td></td><td></td><td></td></tr>
+<tr><td><strong>5. Database Setup & Laravel Coding</strong></td><td></td><td></td><td></td><td>[XXXXX]</td><td>[XXXXX]</td><td></td><td></td></tr>
+<tr><td><strong>6. System Testing with Users & Bug Fixing</strong></td><td></td><td></td><td></td><td></td><td>[XXXXX]</td><td>[XXXXX]</td><td></td></tr>
+<tr><td><strong>7. Final Report Writing & Submission</strong></td><td></td><td></td><td></td><td></td><td></td><td></td><td>[XXXXX]</td></tr>
+</table></div><div class="page-break"></div><h2 class="section-title">APPENDIX III: INTERVIEW AND REQUIREMENTS GUIDE</h2><p class="cover-center"><strong>MAKERERE UNIVERSITY BUSINESS SCHOOL</strong></p><p class="cover-center"><strong>FACULTY OF COMPUTING & INFORMATICS</strong></p><p class="body-p"><strong>PROJECT: KULIMA AGRI SACCO MANAGEMENT SYSTEM</strong></p><h3 class="subsection-title">Section A: Respondent Information</h3><p class="body-p">1. What is your position at Kulima Agri SACCO?</p><p class="body-p">`[ ] Board Member   [ ] Branch Manager   [ ] Loan Officer   [ ] Cash Teller   [ ] Farmer/Member`</p><p class="body-p">2. How long have you worked with or been a member of Kulima Agri SACCO?</p><p class="body-p">`[ ] Less than 1 year   [ ] 1 - 3 years   [ ] 3 - 5 years   [ ] Over 5 years`</p><h3 class="subsection-title">Section B: Current System and Daily Challenges</h3><p class="body-p">3. How do you currently record daily member savings deposits and cash withdrawals?</p><p class="body-p">4. What problems do tellers face when balancing cash at the end of the working day?</p><p class="body-p">5. How does the SACCO store old member records, and how easy is it to find an old transaction file?</p><p class="body-p">6. Have you had cases of lost passbooks, damaged pages, or arithmetic errors in ledger books?</p><h3 class="subsection-title">Section C: Loans and Repayment Tracking</h3><p class="body-p">7. Can you explain the steps taken when a member applies for an agricultural loan?</p><p class="body-p">8. How long does it usually take for a member's loan to be approved and paid out?</p><p class="body-p">9. How do you keep track of loan repayment due dates, and what happens when a borrower pays late?</p><p class="body-p">10. How do you verify that a borrower's guarantor and collateral are genuine?</p><h3 class="subsection-title">Section D: Expectations for the New System</h3><p class="body-p">11. Which features are most important to have in the new web system?</p><p class="body-p">`[ ] National NIN Checks   [ ] Automatic Late Fines   [ ] Locking Collateral Savings`</p><p class="body-p">`[ ] SMS Alerts            [ ] Printable Reports      [ ] Branch Management`</p><p class="body-p">12. What access restrictions should be set for different types of staff?</p><p class="body-p">13. What summary numbers do managers need to see on their dashboard every morning?</p>
+</div>
+</body>
+</html>

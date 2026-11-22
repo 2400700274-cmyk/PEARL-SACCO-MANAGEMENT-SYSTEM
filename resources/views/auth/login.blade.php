@@ -145,7 +145,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
             </div>
             <h1>Pearl SACCO Management System</h1>
-            <p>Sign in to access your administrative workspace</p>
+            <p>{{ $isMemberLogin ? 'Sign in to access your SACCO member dashboard' : 'Sign in to access your workspace' }}</p>
         </div>
 
         @if(session('info'))
@@ -163,6 +163,18 @@
         <form method="POST" action="{{ route('login.post') }}">
             @csrf
             
+            <div class="form-group">
+                <label class="form-label" for="sacco_id">SACCO</label>
+                <select class="form-control" id="sacco_id" name="sacco_id" @if($isMemberLogin) required @endif>
+                    <option value="">Select your SACCO</option>
+                    @foreach($saccos as $sacco)
+                        <option value="{{ $sacco->id }}" @selected(old('sacco_id') == $sacco->id)>{{ $sacco->name }}</option>
+                    @endforeach
+                </select>
+                <span style="display: block; margin-top: 6px; color: var(--text-secondary); font-size: 12px;">Members must choose the SACCO where they are registered. Staff and administrators may leave this blank.</span>
+                @error('sacco_id')<span class="error-message">{{ $message }}</span>@enderror
+            </div>
+
             <div class="form-group">
                 <label class="form-label" for="email">Email Address</label>
                 <input class="form-control" type="email" id="email" name="email" value="{{ old('email') }}" required autofocus placeholder="name@domain.com" autocomplete="email">

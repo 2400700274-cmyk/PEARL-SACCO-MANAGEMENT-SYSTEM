@@ -214,8 +214,7 @@
                     {{ auth()->user()->isSuperAdmin() ? 'Manage SACCOs' : 'Dashboard' }}
                 </a>
             @else
-                <a href="{{ route('contact') }}" class="btn-outline">Inquiries</a>
-                <a href="{{ route('login') }}" class="btn-solid">Portal Login</a>
+                <a href="{{ route('login') }}" class="btn-solid">Sign In to Workspace</a>
             @endauth
         </div>
     </nav>

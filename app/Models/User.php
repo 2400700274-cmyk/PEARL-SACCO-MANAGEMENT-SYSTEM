@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-#[Fillable(['name', 'nin', 'email', 'password', 'role_id', 'status', 'parent_id', 'profile_photo_path'])]
+#[Fillable(['name', 'nin', 'email', 'password', 'role_id', 'status', 'parent_id', 'member_id', 'profile_photo_path'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
@@ -33,9 +33,9 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
-    public function member(): HasOne
+    public function member(): BelongsTo
     {
-        return $this->hasOne(Member::class);
+        return $this->belongsTo(Member::class, 'member_id');
     }
 
     public function parent(): BelongsTo
@@ -56,6 +56,11 @@ class User extends Authenticatable
     public function isSuperAdmin(): bool
     {
         return $this->role && $this->role->slug === 'super-admin';
+    }
+
+    public function isMember(): bool
+    {
+        return $this->role && $this->role->slug === 'member';
     }
 
     public function getTenantIdAttribute()

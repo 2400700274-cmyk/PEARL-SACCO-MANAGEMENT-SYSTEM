@@ -22,6 +22,11 @@ class Member extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function userAccount()
+    {
+        return $this->hasOne(User::class, 'member_id');
+    }
+
     public function savingsAccounts(): HasMany
     {
         return $this->hasMany(SavingsAccount::class);
@@ -30,5 +35,22 @@ class Member extends Model
     public function loans(): HasMany
     {
         return $this->hasMany(Loan::class);
+    }
+
+    public function getTotalSavingsBalanceAttribute(): float
+    {
+        return (float) $this->savingsAccounts()->where('status', 'Active')->sum('balance');
+    }
+
+    public function getActiveLoanBalanceAttribute(): float
+    {
+        return (float) $this->loans()->where('status', 'Active')->sum('balance');
+    }
+
+    public function getAvailableLoanLimitAttribute(): float
+    {
+        $savingsLimit = $this->total_savings_balance * 3;
+
+        return (float) max(0, $savingsLimit - $this->active_loan_balance);
     }
 }

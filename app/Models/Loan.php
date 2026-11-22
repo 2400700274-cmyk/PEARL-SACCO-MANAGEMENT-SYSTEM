@@ -10,9 +10,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 #[Fillable([
     'member_id',
+    'loan_type',
     'principal_amount',
     'interest_rate',
     'duration_months',
+    'loan_purpose',
     'due_date',
     'total_payable',
     'balance',
@@ -91,5 +93,58 @@ class Loan extends Model
         }
 
         return (int) Carbon::today()->diffInDays($this->due_date);
+    }
+
+    public function getMonthlyInstallmentAttribute(): float
+    {
+        $months = max(1, $this->duration_months);
+
+        return (float) round($this->total_payable / $months, 2);
+    }
+
+    public function getRepaymentScheduleAttribute(): array
+    {
+        $schedule = [];
+        $months = max(1, $this->duration_months);
+        $totalPayable = (float) $this->total_payable;
+        $installmentAmount = round($totalPayable / $months, 2);
+        $totalPaid = $this->amount_paid;
+        $startDate = $this->approved_at ? Carbon::parse($this->approved_at) : ($this->created_at ? Carbon::parse($this->created_at) : Carbon::today());
+
+        for ($i = 1; $i <= $months; $i++) {
+            $dueDate = (clone $startDate)->addMonths($i);
+            $cumulativeTarget = min($totalPayable, round($installmentAmount * $i, 2));
+            $prevTarget = round($installmentAmount * ($i - 1), 2);
+
+            $paidForInstallment = 0.0;
+            if ($totalPaid >= $cumulativeTarget) {
+                $paidForInstallment = ($i === $months) ? round($totalPayable - $prevTarget, 2) : $installmentAmount;
+            } elseif ($totalPaid > $prevTarget) {
+                $paidForInstallment = round($totalPaid - $prevTarget, 2);
+            }
+
+            $currentAmount = ($i === $months) ? round($totalPayable - $prevTarget, 2) : $installmentAmount;
+            $remainingOnInstallment = max(0, round($currentAmount - $paidForInstallment, 2));
+
+            $status = 'Pending';
+            if ($remainingOnInstallment <= 0) {
+                $status = 'Paid';
+            } elseif ($paidForInstallment > 0) {
+                $status = 'Partially Paid';
+            } elseif (Carbon::today()->gt($dueDate) && $this->status === 'Active') {
+                $status = 'Overdue';
+            }
+
+            $schedule[] = [
+                'installment_number' => $i,
+                'installment_amount' => $currentAmount,
+                'due_date' => $dueDate,
+                'amount_paid' => $paidForInstallment,
+                'remaining_balance' => $remainingOnInstallment,
+                'status' => $status,
+            ];
+        }
+
+        return $schedule;
     }
 }

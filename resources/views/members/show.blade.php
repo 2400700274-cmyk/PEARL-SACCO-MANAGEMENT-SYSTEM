@@ -9,6 +9,7 @@
             <h1 style="margin: 0; font-size: 24px;">Member Profile: {{ $member->member_number }}</h1>
         </div>
         <div style="display: flex; gap: 12px;">
+            <a href="{{ route('member.dashboard', ['member_id' => $member->id]) }}" class="btn btn-secondary" style="font-weight: 600;">Open Member Portal &rarr;</a>
             <a href="{{ route('members.edit', $member) }}" class="btn btn-secondary">Edit Profile</a>
             @if($member->status === 'Active')
                 <a href="{{ route('loans.create') }}" class="btn btn-primary">+ Apply for Loan</a>

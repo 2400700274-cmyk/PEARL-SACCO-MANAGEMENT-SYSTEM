@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Member;
 use App\Models\Permission;
 use App\Models\Role;
 use App\Models\User;
@@ -41,6 +42,9 @@ class RolesAndPermissionsSeeder extends Seeder
             // Settings & Staff
             ['name' => 'Manage Settings', 'slug' => 'manage-settings', 'module' => 'Settings'],
             ['name' => 'Manage Staff', 'slug' => 'manage-staff', 'module' => 'Staff'],
+
+            // Member Portal
+            ['name' => 'View Member Dashboard', 'slug' => 'view-member-dashboard', 'module' => 'Member Portal'],
         ];
 
         foreach ($permissions as $perm) {
@@ -52,10 +56,16 @@ class RolesAndPermissionsSeeder extends Seeder
         $admin = Role::firstOrCreate(['slug' => 'administrator'], ['name' => 'Administrator', 'description' => 'Full access to individual SACCO workspace']);
         $loanOfficer = Role::firstOrCreate(['slug' => 'loan-officer'], ['name' => 'Loan Officer', 'description' => 'Can manage loans and view members']);
         $cashier = Role::firstOrCreate(['slug' => 'cashier'], ['name' => 'Cashier', 'description' => 'Can transact savings and record loan repayments']);
+        $memberRole = Role::firstOrCreate(['slug' => 'member'], ['name' => 'Member', 'description' => 'SACCO Member with access to personal member portal and self-service']);
 
         // Assign Permissions
         // Super Admin gets all
         $superAdmin->permissions()->sync(Permission::pluck('id'));
+
+        // Member Role gets member dashboard
+        $memberRole->permissions()->sync(
+            Permission::whereIn('slug', ['view-member-dashboard'])->pluck('id')
+        );
 
         // Admin gets all except manage-saccos (unless granted)
         $admin->permissions()->sync(
@@ -89,5 +99,20 @@ class RolesAndPermissionsSeeder extends Seeder
                 'status' => 'Active',
             ]
         );
+
+        // Seed default Member User Account if member exists
+        if (Member::where('id', 1)->exists()) {
+            User::firstOrCreate(
+                ['email' => 'member@pearlsacco.org'],
+                [
+                    'name' => 'Mathew Phillip',
+                    'nin' => 'CM90012345ABCD',
+                    'password' => bcrypt('password'),
+                    'role_id' => $memberRole->id,
+                    'status' => 'Active',
+                    'member_id' => 1,
+                ]
+            );
+        }
     }
 }
